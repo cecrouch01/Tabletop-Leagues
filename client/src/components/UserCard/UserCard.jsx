@@ -1,7 +1,7 @@
 const UserCard = () => {
     return (
     <>
-        <h2>UserCard</h2>
+        <h2>User Card Info</h2>
     </>
     )
 }
