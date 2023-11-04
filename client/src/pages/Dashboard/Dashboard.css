@@ -1,0 +1,19 @@
+.user-card {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.dshbrd-contents {
+    display: flex;
+    justify-content: space-around;
+}
+
+.user-record{
+    width: 30vw;
+}
+
+.active-leagues {
+    width: 30vw;
+}
