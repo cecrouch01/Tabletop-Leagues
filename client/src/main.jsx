@@ -6,7 +6,7 @@ import Error from "./pages/Error/Error.jsx";
 import Home from "./pages/Home/Home.jsx";
 import Dashboard from "./pages/Dashboard/Dashboard.jsx";
 import CreateLeague from './pages/CreateLeague/CreateLeague.jsx';
-import JoinLeague from './page/JoinLeague/JoinLeague.jsx';
+import JoinLeagues from './pages/JoinLeagues/JoinLeagues.jsx';
 import SingleLeague from './pages/SingleLeague/SingleLeague.jsx';
 import './index.css'
 
@@ -30,7 +30,7 @@ const router =  createBrowserRouter([
       },
       {
         path: '/league/join',
-        element: <JoinLeague />
+        element: <JoinLeagues />
       },
       {
         path: '/league/:leagueName',
