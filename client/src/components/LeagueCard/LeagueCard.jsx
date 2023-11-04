@@ -1,7 +1,7 @@
 const LeagueCard = () => {
     return (
     <>
-        <h2>LeagueCard</h2>
+        <h2>League Card Info</h2>
     </>
     )
 }
