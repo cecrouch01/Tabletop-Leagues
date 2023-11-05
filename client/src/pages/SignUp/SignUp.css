@@ -1,1 +1,30 @@
-/* placeholder  */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .form {
+      margin: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      width: 40%;
+    }
+    
+    .form input, 
+    #aboutMeBody{
+      margin-top: 5px;
+      margin-bottom: 5px;
+      
+    }
+  
+    #aboutMeBody {
+      height: 5em;
+    }
+  
+    .sign-up-button {
+      display: flex;
+      justify-content: center;
+    }
+  
+    
