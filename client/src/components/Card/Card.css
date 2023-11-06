@@ -1,0 +1,12 @@
+.card {
+    border: 2px solid black;
+    width: 30vw;
+    height: 20vh;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.dshbrd-user-card {
+    margin: 10px 35vw 10px 35vw;
+}
+

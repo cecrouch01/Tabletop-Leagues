@@ -1,0 +1,13 @@
+.user-card-contents {
+    margin-left: 20px;
+    display: flex;
+}
+h4 {
+    text-align: center;
+}
+.stat-list {
+    list-style-type: none;
+}
+li {
+    margin-bottom: 10px;
+}
