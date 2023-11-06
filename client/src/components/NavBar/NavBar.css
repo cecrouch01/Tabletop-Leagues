@@ -17,7 +17,9 @@
     margin-right: 30em;
 }
 .navbar-title {
-    padding: 0 1em;
+    padding: 0 1em 0 .25em;
+    font-size: 3.5em;
+    
 }
 
 .sub-title {
