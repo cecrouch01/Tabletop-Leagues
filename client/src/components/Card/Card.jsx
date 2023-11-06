@@ -1,10 +1,11 @@
 import UserCard from "../UserCard/UserCard";
 import LeagueCard from "../LeagueCard/LeagueCard";
+import './Card.css'
 
 const Card = ({type}) => {
+    //TODO: create a useReducer for return different style cards. 
     return (
     <div className={`card ${type}-card`}>
-        <h2>{type} Card</h2>
         <div>
             {type === 'user' ? <UserCard /> : null}
             {type === 'league' ? <LeagueCard /> : null}
