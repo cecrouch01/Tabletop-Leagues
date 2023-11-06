@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import './SignUp.css';
-import { validateEmail } from '../../utils/helpers';
+import { validateEmail, checkPassword } from '../../utils/helpers';
 
 export default function SignUp() {
     const [firstName, setFirstName] = useState('');
@@ -39,6 +39,13 @@ export default function SignUp() {
             return;
         }
 
+        if (!checkPassword(password)) {
+            setErrorMessage(
+                `Password must contain 8 characters including numbers and letters.`
+            );
+            return;
+        }
+
         alert(`Welcome ${username}!`);
 
         setFirstName('');
@@ -47,6 +54,7 @@ export default function SignUp() {
         setEmail('');
         setPassword('');
         setAboutMe('');
+        setErrorMessage('');
     }
 
     return (

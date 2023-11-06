@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import './Login.css';
-import { validateEmail } from '../../utils/helpers';
+import { validateEmail, checkPassword } from '../../utils/helpers';
 
 export default function Login() {
     const [username, setUsername] = useState('');
@@ -25,11 +25,17 @@ export default function Login() {
     const handleFormSubmit = (e) => {
         e.preventDefault();
 
-        if (!validateEmail(email)) {
-            setErrorMessage('Email is invalid');
+        if (!validateEmail(email) || !password) {
+            setErrorMessage('Email or password is invalid');
             return;
         }
 
+        if (!checkPassword(password)) {
+            setErrorMessage(
+                `Password is invalid`
+            );
+            return;
+        }
         alert(`Welcome ${username}!`);
 
         setUsername('');
