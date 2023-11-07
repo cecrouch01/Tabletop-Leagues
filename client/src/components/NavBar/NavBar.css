@@ -6,11 +6,16 @@
 }
 
 .navbar-text {
-    color:white;
+    
     display: flex;
 } 
 .nav-link {
-    color: white;
+    color: #ff914d;
+}
+
+.logo {
+    width: 65%;
+    height: auto;
 }
 
 .title-subtitle {
@@ -29,7 +34,7 @@
 
 .login-signUp-link {
     display:flex;
-    align-items: center;
+    align-items: end;
 }
 
 .login-signUp-link-text {

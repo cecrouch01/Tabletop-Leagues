@@ -8,7 +8,8 @@ const NavBar = () => {
         <header className="navbar">
             <div className="navbar-text">
                 <div className='title-subtitle'>
-                    <h1 className="navbar-title">Colosseum</h1>
+                    {/* <h1 className="navbar-title">Colosseum</h1> */}
+                    <img className='logo' src='./COLOSSEUM.png'></img>
                     <div className='sub-title'>
                         <Link
                             to="/league/join"
