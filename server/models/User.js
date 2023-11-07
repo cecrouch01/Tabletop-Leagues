@@ -1,6 +1,8 @@
 const { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt');
 
+
+
 const userSchema = new Schema ({
     username: {
         type: String,
@@ -23,9 +25,12 @@ const userSchema = new Schema ({
         type: String,
 
     },
-   profileImage: {
-
+   icon: {
+    type: String,
+    required: true,
    },
+   
+   leaugeArchive: [{type: Schema.Type.ObjectId, ref: 'League'}],
 },
    {
     toJSON: {
@@ -33,6 +38,7 @@ const userSchema = new Schema ({
     },
   },
 );
+
 
 userSchema.pre('save', async function (next) {
     if (this.isNew || this.isModified('password')) {
