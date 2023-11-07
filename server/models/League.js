@@ -1,16 +1,18 @@
 const { Schema, model } = require('mongoose');
 
 const gameSchema = new Schema({
-    playerPlacements: [
+    game: [
         {
             player: {
                 type: Schema.Types.ObjectId,
                 ref: 'User',
+                unique: true,
             },
             place: {
                 type: Number,
                 min: 1,
                 max: 4,
+                unique: true,
             },
         },
     ],
@@ -31,6 +33,11 @@ const leagueSchema = new Schema ({
             type: Schema.Types.ObjectId,
             ref: 'User',
             required: true,
+            admin: {
+                type: Boolean,
+                required: true,
+                unique: true,
+            }
         }
     ],
     games: [
