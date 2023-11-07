@@ -1,0 +1,16 @@
+.create-league-frm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.frm-input-title {
+    width: 20vw;
+}
+.error-message {
+    text-align: center;
+}
+.frm-textarea-description {
+    width: 20vw;
+    height: 20vh;
+}
