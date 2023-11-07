@@ -1,7 +1,26 @@
 const { Schema, model } = require('mongoose');
 
 const leagueSchema = new Schema ({
- 
+    name: {
+        type: String,
+        required: true,
+        unique: true,
+    },
+    description: {
+        type: String,
+        required: true,
+    },
+    members: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'User',
+            required: true,
+        }
+    ],
+    active: {
+        type: Boolean,
+        required: true,
+    }
 },
    {
     toJSON: {
@@ -12,6 +31,6 @@ const leagueSchema = new Schema ({
 
 
 
-const League = model('User', userSchema);
+const League = model('League', leagueSchema);
 
-module.exports = League, leagueSchema;
+module.exports = League;
