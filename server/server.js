@@ -13,6 +13,17 @@ const server = new ApolloServer({
 
 const app = express();
 
+const grady = () => {
+    return {
+        _id: 1,
+        username: "IamGrady",
+        email: "grady@example.com",
+        password: "password",
+        description: "",
+        icon: ""
+    }
+}
+
 const startApolloSever = async () => {
     await server.start();
 
@@ -20,7 +31,7 @@ const startApolloSever = async () => {
     app.use(express.json());
 
     app.use('/graphql', expressMiddleware(server, {
-        context: authMiddleware
+        context: grady
     }));
 
     db.once('open', () => {
