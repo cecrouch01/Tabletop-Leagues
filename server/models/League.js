@@ -6,16 +6,26 @@ const gameSchema = new Schema({
             player: {
                 type: Schema.Types.ObjectId,
                 ref: 'User',
-                unique: true,
-            },
-            place: {
-                type: Number,
-                min: 1,
-                max: 4,
-                unique: true,
+                place: {
+                    type: Number,
+                    min: 1,
+                    max: 4,
+                }
             },
         },
     ],
+});
+
+const memberSchema = new Schema({
+    member: {
+        type: Schema.Types.ObjectId,
+        ref: 'User',
+        required: true,
+        admin: {
+            type: Boolean,
+            required: true,
+        },
+    },
 });
 
 const leagueSchema = new Schema ({
@@ -29,16 +39,7 @@ const leagueSchema = new Schema ({
         required: true,
     },
     members: [
-        {
-            type: Schema.Types.ObjectId,
-            ref: 'User',
-            required: true,
-            admin: {
-                type: Boolean,
-                required: true,
-                unique: true,
-            }
-        }
+        memberSchema
     ],
     games: [
         gameSchema
@@ -46,7 +47,7 @@ const leagueSchema = new Schema ({
     active: {
         type: Boolean,
         required: true,
-    }
+    },
 },
    {
     toJSON: {
