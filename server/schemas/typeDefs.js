@@ -1,15 +1,20 @@
 const typeDefs = `
 type User {
-    _id: id
+    _id: ID!
     username: String!
     email: String!
     password: String!
     description: String
     icon: String
 }
- type League {
-    
- }
+type League {
+    _id: ID!
+    name: String!
+    description: String!
+    members: [User]!
+    games: [Game]!
+    active: Boolean!
+}
     type Query {
 
 }
