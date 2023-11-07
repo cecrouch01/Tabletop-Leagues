@@ -1,0 +1,17 @@
+.icon-selector{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.icons {
+    display: flex;
+    
+}
+
+.icon-item{
+    font-size: 5em;
+    padding: 0 .25em;
+}
+

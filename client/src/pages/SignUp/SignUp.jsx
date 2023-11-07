@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import './SignUp.css';
 import { validateEmail, checkPassword } from '../../utils/helpers';
+import IconSelector from '../../components/IconSelector/IconSelector';
 
 export default function SignUp() {
     const [firstName, setFirstName] = useState('');
@@ -104,6 +105,7 @@ export default function SignUp() {
                     type="aboutMe"
                     placeholder="Tell us about yourself"
                 />
+                <IconSelector />
                 <button className="sign-up-button" type="signUp">Sign Up</button>
             </form>
             {errorMessage && (
