@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import { useColosseumContext } from '../../utils/ColosseumContext';
+import { TEST } from '../../utils/actions';
 
 import './CreateLeague.css';
 
@@ -7,8 +9,7 @@ const CreateLeague = () => {
     const [leagueDescription, setLeagueDescription] = useState('');
     const [nameErrorMessage, setNameErrorMessage] = useState('');
     
-
-
+    
     const createLeague = (e) => {
         e.preventDefault();
 
