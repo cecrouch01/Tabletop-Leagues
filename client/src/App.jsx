@@ -10,6 +10,7 @@ import { Outlet } from 'react-router-dom';
 import './App.css';
 import Navbar from './components/NavBar/NavBar';
 import Footer from './components/Footer/Footer';
+import { ColosseumProvider } from './utils/ColosseumContext';
 
 // const httpLink = createHttpLink({
 //   uri: '/graphql',
@@ -29,11 +30,13 @@ function App() {
   // const [count, setCount] = useState(0)
 
   return (
-    <div className='app'>
-      <Navbar />
-      <Outlet />
-      <Footer />
-    </div>
+    <ColosseumProvider>
+      <div className='app'>
+        <Navbar />
+        <Outlet />
+        <Footer />
+      </div>
+    </ColosseumProvider>
   )
 }
 
