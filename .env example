@@ -1,3 +1,0 @@
-DB_HOST=''
-SESSION_SECRET='mysecretshh'
-SESSION_EXPIRATION='2h'
