@@ -4,13 +4,16 @@ const gameSchema = new Schema({
     game: [
         {
             player: {
-                type: Schema.Types.ObjectId,
-                ref: 'User',
+                user: {
+                    type: Schema.Types.ObjectId,
+                    ref: 'User',
+                    required: true,
+                },
                 place: {
                     type: Number,
                     min: 1,
                     max: 4,
-                }
+                },
             },
         },
     ],
@@ -18,9 +21,14 @@ const gameSchema = new Schema({
 
 const memberSchema = new Schema({
     member: {
-        type: Schema.Types.ObjectId,
-        ref: 'User',
-        required: true,
+        user: {
+            type: Schema.Types.ObjectId,
+            ref: 'User',
+            required: true
+        },
+        points: {
+            type: Number
+        },
         admin: {
             type: Boolean,
             required: true,
