@@ -11,7 +11,45 @@
 }
 
 .icon-item{
+    width: 1.5em;
+    height: 1.5em;
     font-size: 5em;
-    padding: 0 .25em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: .1em;
+    color: black;
+    -webkit-transition: all 1s ease;
+    /* border: none; */
+    background-color: rgb(168, 168, 168);
+    border: solid 1px;
+    
+    border-radius: 50%;
+}
+
+.icon-item:hover,
+.icon-item.active {
+    -webkit-transition: all 1s ease;
+    transition: 1s ease;
+    /* transition: border solid; */
+    overflow: visible;
+    font-size: 5.5em;
+    cursor: pointer;
+    color: #ff914d;
+    background-color: black;
+    
+}
+
+#angel {
+    width: 1.5em;
+    height: 1.5em;
+    /* border: 1px; */
+    border-radius: 50%;
+    font-size: 5.5em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: .1em;
+    color: #ff914d;
 }
 
