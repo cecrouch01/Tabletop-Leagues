@@ -36,8 +36,7 @@ const resolvers = {
 
         return { token, user};
       },
-
-      addUser: async (parent, ) => {
+      addUser: async (parent, {username, email, password, description, icon}) => {
         const user = await User.create({username, email, password, description, icon});
 
         if (!user) {
