@@ -24,7 +24,5 @@ export default function IconSelector() {
                 <button onClick={() => handleClick('skull')} className={active === 'skull' ? 'icon-item active' : 'icon-item'}><GiAlienSkull /></button>
             </div>
         </div>
-
-
     );
 }

@@ -40,16 +40,5 @@
     
 }
 
-#angel {
-    width: 1.5em;
-    height: 1.5em;
-    /* border: 1px; */
-    border-radius: 50%;
-    font-size: 5.5em;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: .1em;
-    color: #ff914d;
-}
+
 
