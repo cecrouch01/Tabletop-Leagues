@@ -14,7 +14,7 @@ type League {
     name: String!
     description: String!
     members: [Member]!
-    games: [Game]!
+    games: [Game]
     active: Boolean!
 }
 
