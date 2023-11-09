@@ -2,9 +2,28 @@
     margin-left: 20px;
     display: flex;
 }
-h4 {
+.username, .stats {
+    margin-top: 10px;
     text-align: center;
 }
+.username {
+    margin-bottom: 5px;
+}
+.user-icon{
+    width: 100px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 5px 5px 10px 5px;
+    color: black;
+    /* border: none; */
+    background-color: rgb(168, 168, 168);
+    border: solid 1px;
+    border-radius: 50%;
+    box-shadow: 0 1px 6px 1px gray;
+}
+
 .stat-list {
     list-style-type: none;
 }
