@@ -29,10 +29,6 @@ const memberSchema = new Schema({
         points: {
             type: Number
         },
-        admin: {
-            type: Boolean,
-            required: true,
-        },
     },
 });
 
@@ -44,6 +40,11 @@ const leagueSchema = new Schema ({
     },
     description: {
         type: String,
+        required: true,
+    },
+    admin: {
+        type: Schema.Types.ObjectId,
+        ref: 'User',
         required: true,
     },
     members: [

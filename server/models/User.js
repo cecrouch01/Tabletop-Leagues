@@ -29,8 +29,12 @@ const userSchema = new Schema ({
     type: String,
     required: true,
    },
-   
-   leaugeArchive: [{type: Schema.Type.ObjectId, ref: 'League'}],
+   leauges: [
+      {
+        type: Schema.Type.ObjectId,
+        ref: 'League',
+      },
+    ],
 },
    {
     toJSON: {

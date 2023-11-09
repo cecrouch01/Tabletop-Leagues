@@ -6,13 +6,16 @@ type User {
     password: String!
     description: String
     icon: String
+    leagues: [League]
 }
+
 type League {
     _id: ID!
     name: String!
     description: String!
+    admin: User!
     members: [Member]!
-    games: [Game]!
+    games: [Game]
     active: Boolean!
 }
 
@@ -21,14 +24,20 @@ type Game: {
 }
 
 type GamePlayer {
-    player: User
+    player: User!
     place: Int
 }
 
 type Member {
-    user: User
-    admin: Boolean
+    user: User!
     points: Int
+}
+input userInput {
+    username: String
+    email: String
+    password: String
+    description: String
+    icon: String
 }
 
     type Query {
