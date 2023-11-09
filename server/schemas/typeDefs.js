@@ -41,10 +41,15 @@ input userInput {
 }
 
     type Query {
-
+        getUser: User!
+        getLeague: League!
 }
 
     type Mutation {
+        loginUser(email: String!, password: String!)
+  addUser(username: String!, email: String!, password: String!, description: String, icon: String)
+  updateUser(id: ID!, username: String, email: String, password: String, description: String, icon: String, addToLeagues: [ID])
+  removeUser(_id: ID!)
 
 }
 `;
