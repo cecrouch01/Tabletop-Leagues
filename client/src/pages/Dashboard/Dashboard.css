@@ -1,16 +1,13 @@
+.dshbrd-user-card {
+    display: flex;
+    justify-content: center;
+}
 .dshbrd-contents {
     display: flex;
     justify-content: space-around;
+    flex-wrap: wrap;
 }
 
-.user-record{
-    width: 30vw;
-}
-
-
-.active-leagues {
-    width: 30vw;
-}
 .user-record>h2, .active-leagues>h2{
     text-align: center;
 }
