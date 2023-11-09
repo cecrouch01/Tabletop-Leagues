@@ -40,7 +40,7 @@ const resolvers = {
 
         return {token, user};
       },
-      updateUser: async (parent, { id, username, email, password, description, icon, addToArchive }) => {
+      updateUser: async (parent, { id, username, email, password, description, icon, addToLeagues}) => {
         try {
           const userUpdate = {
             username,
@@ -55,6 +55,7 @@ const resolvers = {
           }
   
           if (addToLeagues) {
+
             userUpdate.leagues = addToLeagues;
           }
   
