@@ -13,6 +13,7 @@ type League {
     _id: ID!
     name: String!
     description: String!
+    admin: User!
     members: [Member]!
     games: [Game]
     active: Boolean!
@@ -29,7 +30,6 @@ type GamePlayer {
 
 type Member {
     user: User!
-    admin: Boolean
     points: Int
 }
 
