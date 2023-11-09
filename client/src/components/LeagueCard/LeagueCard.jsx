@@ -1,22 +1,20 @@
 import Card from '../Card/Card'
 
-import placeholder from '../../assets/75x75-placeholder.png' 
 import './LeagueCard.css'
 const LeagueCard = () => {
     return (
     <Card>
         <div className='league-card-contents'>
-            <div className='league-description'>
-                <img src={placeholder} />
+            <div className='league-contents'>
                 <div>
-                    <h3>League Name</h3>
-                    <ul>
-                        <li>Number of League Games</li>
-                        <li>Total Amount of Players</li>
-                        <li>Format</li>
-                        <li>This is just a visible note</li>
-                        <li>use useReducer instead of the card set up we have now</li>
-                </ul>
+                    <h3 className='league-name'>League Name</h3>
+                    <p className='league-description'>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    </p>
+                    <ul className='league-list'>
+                        <li >Creator: John Smith</li>
+                        <li >Size: X players </li>
+                    </ul>
                 </div>
             </div>
         </div>
