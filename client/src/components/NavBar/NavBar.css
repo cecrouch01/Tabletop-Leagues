@@ -44,11 +44,19 @@
 @media screen and (max-width: 900px) {
     .navbar{
         flex-direction: column;
-        justify-content: center;
+        align-items: center;
     }
-
+    
+    .logo{
+        width: 45%;
+        height: auto;
+    }
     .nav-text{
     font-size: 1em;
+    }
+
+    .nav-link{
+        margin: -.5em;
     }
     
 }
