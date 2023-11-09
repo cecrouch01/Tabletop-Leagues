@@ -49,6 +49,7 @@ export default function Login() {
             <h2 className="page-header">Login</h2>
             <form className="form" onSubmit={handleFormSubmit}>
                 <input
+                    className='form-color'
                     value={username}
                     name="username"
                     onChange={handleInputChange}
@@ -56,6 +57,7 @@ export default function Login() {
                     placeholder="Username"
                 />
                 <input
+                    className='form-color'
                     value={email}
                     name="email"
                     onChange={handleInputChange}
@@ -63,17 +65,20 @@ export default function Login() {
                     placeholder="Email"
                 />
                 <input
+                    className='form-color'
                     value={password}
                     name="password"
                     onChange={handleInputChange}
                     type="password"
                     placeholder="Password"
                 />
-                <button className="login-button" type="login">Login</button>
+                <div className='button-container'>
+                    <button className="login-button" type="login">Login</button>
+                </div>
             </form>
             {errorMessage && (
                 <div>
-                    <p className="error-text">{errorMessage}</p>
+                    <h2 className="error-text">{errorMessage}</h2>
                 </div>
             )}
         </div>

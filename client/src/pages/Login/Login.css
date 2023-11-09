@@ -2,26 +2,74 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    background-color: black;
+    width: 100%;
+    height: 100%;
   }
-  .form {
+
+  .page-header {
+    margin: 0;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: #ff914d;
+    font-size: 2em;
+    -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: #d84727;
+  }
+
+    .form {
       margin: 20px;
       display: flex;
       flex-direction: column;
       justify-content: center;
       width: 40%;
+      color: black;
+    }
+    
+    .form-color {
+      background-color: rgb(168, 168, 168);
     }
     
     .form input{
       margin-top: 5px;
       margin-bottom: 5px;
-      
+      border-top: 2px solid gray;
+      border-left: 2px solid gray;
+      border-right: 2px solid rgb(59, 58, 58);
+      border-bottom: 2px solid rgb(59, 58, 58);
+      border-radius: 4px;
     }
-  
-  
-  
-    .login-button {
+    
+  .button-container {
       display: flex;
       justify-content: center;
+  }
+ 
+  .login-button {
+      background-color: rgb(168, 168, 168);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: auto;
+      width:20%;
+      margin-top: 1em;
+      -webkit-transition: all 1s ease;
+      border-radius: 4px;
+    }
+
+    .login-button:hover {
+      -webkit-transition: all 1s ease;
+    transition: 1s ease;
+    overflow: visible;
+      cursor: pointer;
+      color: #ff914d;
+    background-color: black;
+    border: solid #ff914d 1px;
+    }
+  
+    @media screen and (max-width: 900px){
+      .login-button {
+        width: 40%
+      }
     }
   
     

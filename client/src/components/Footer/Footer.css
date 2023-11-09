@@ -1,20 +1,26 @@
 .footer-container {
     margin-top: auto;
+    border-top: 4px solid rgb(87, 83, 83); 
+    /* margin-bottom: 0; */
+    /* position:relative; */
+    /* width: 100%; */
+    left: 0;
+    bottom: 0;
 }
 .footer {
     display: flex;
     justify-content:center;
     align-items:center;
-    margin-top: auto;
-    height: 100px;
-    background-color:black;
-    /* border-top-style: solid;
-    border-color: gray; */
+    /* margin-top: auto; */
+    height: 120px;
+    background-color: rgb(168, 168, 168);
+   
+    
   }
   
   .footerItem{
     margin-left: 1em;
     margin-right: 1em;
     font-size: 2em;
-    color: #ff914d;
+    color: black;
   }

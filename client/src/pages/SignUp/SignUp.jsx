@@ -112,11 +112,14 @@ export default function SignUp() {
                     placeholder="Tell us about yourself"
                 />
                 <IconSelector />
-                <button className="sign-up-button" type="signUp">Sign Up</button>
+                <div className='btn-container'>
+                    <button className="sign-up-button" type="signUp">Sign Up</button>
+                </div>
+                {/* <button className="sign-up-button" type="signUp">Sign Up</button> */}
             </form>
             {errorMessage && (
                 <div>
-                    <p className="error-text">{errorMessage}</p>
+                    <h2 className="error-text">{errorMessage}</h2>
                 </div>
             )}
         </div>
