@@ -31,7 +31,7 @@ const userSchema = new Schema ({
    },
    leauges: [
       {
-        type: Schema.Type.ObjectId,
+        type: Schema.Types.ObjectId,
         ref: 'League',
       },
     ],
