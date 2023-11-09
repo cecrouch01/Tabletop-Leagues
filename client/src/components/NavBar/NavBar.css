@@ -1,46 +1,54 @@
-.navbar {
+.header {
     display:flex;
     background-color: black;
-    justify-content: center;
+    /* justify-content: center; */
     width: 100%;
 }
 
-.navbar-text {
-    
+.header-top {
+    width: 100%;
     display: flex;
-} 
-.nav-link {
-    color: #ff914d;
+    flex-direction:row;
+    justify-content: center;
 }
 
 .logo {
-    width: 65%;
+    width: 25%;
     height: auto;
-}
-
-.title-subtitle {
-    margin-right: 30em;
-}
-.navbar-title {
-    padding: 0 1em 0 .25em;
-    font-size: 3.5em;
+    margin: 0 2em;
     
 }
 
-.sub-title {
-    display:flex;
+.navbar {
+    display: flex;
+    justify-content: space-evenly;
+    background-color: black;
+    width: 100%;
+    height: auto;
     
 }
 
-.login-signUp-link {
-    display:flex;
-    align-items: end;
+.nav-link {
+    color: #ff914d;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-decoration: none;
 }
 
-.login-signUp-link-text {
-    padding: 0 1em;
+.nav-text {
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 2em;
 }
 
-.league-link-text {
-    padding: 0 1em;
+@media screen and (max-width: 900px) {
+    .navbar{
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .nav-text{
+    font-size: 1em;
+    }
+    
 }
