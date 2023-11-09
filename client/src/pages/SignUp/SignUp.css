@@ -8,7 +8,22 @@
     margin: 0;
     font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     color: #ff914d;
+    font-size: 2em;
+    -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: #d84727;
   }
+
+.error-text{
+  margin: 0;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: #ff914d;
+    font-size: 1.5em;
+    margin-bottom: 1em;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: #d84727;
+
+}
+
   .form {
       /* margin: 20px 20px 0 20px; */
       display: flex;
@@ -25,20 +40,46 @@
     #aboutMeBody{
       margin-top: 5px;
       margin-bottom: 5px;
-      
+      border-top: 2px solid gray;
+      border-left: 2px solid gray;
+      border-right: 2px solid rgb(59, 58, 58);
+      border-bottom: 2px solid rgb(59, 58, 58);
+      border-radius: 4px;
     }
   
     #aboutMeBody {
       height: 5em;
     }
-  
+    
+    .btn-container {
+      display: flex;
+      justify-content: center;
+    }
     .sign-up-button {
       background-color: rgb(168, 168, 168);
       display: flex;
       justify-content: center;
       align-items: center;
-      align-content: center;
-      width:50%;
+      height: auto;
+      width:20%;
+      margin-top: 1em;
+      -webkit-transition: all 1s ease;
+      border-radius: 4px;
+    }
+
+    .sign-up-button:hover {
+      -webkit-transition: all 1s ease;
+    transition: 1s ease;
+    overflow: visible;
+      cursor: pointer;
+      color: #ff914d;
+    background-color: black;
+    border: solid #ff914d 1px;
     }
   
+    @media screen and (max-width: 900px){
+      .sign-up-button {
+        width: 40%
+      }
+    }
     

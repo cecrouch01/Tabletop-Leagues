@@ -34,17 +34,25 @@
     flex-direction: row;
     align-items: center;
     text-decoration: none;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: #d84727;
 }
 
 .nav-text {
     font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-size: 2em;
+    -webkit-transition: all 1s ease;
 }
 
+.nav-text:hover {
+    -webkit-transition: all 1s ease;
+    font-size: 2.15em;
+}
 @media screen and (max-width: 900px) {
     .navbar{
         flex-direction: column;
         align-items: center;
+        padding-bottom: 1em;
     }
     
     .logo{
@@ -55,8 +63,13 @@
     font-size: 1em;
     }
 
+    .nav-text:hover {
+        -webkit-transition: all 1s ease;
+        font-size: 1.15em;
+    }
+
     .nav-link{
-        margin: -.5em;
+        margin: -.75em;
     }
     
 }

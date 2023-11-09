@@ -2,5 +2,8 @@
     min-height: 100vh;
     display:flex;
     flex-direction: column;
+    /* uncomment below when styling the remaining pages */
+    /* background-color: black; */
 }
+
 

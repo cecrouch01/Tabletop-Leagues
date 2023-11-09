@@ -8,14 +8,14 @@ const CreateLeague = () => {
     const [leagueName, setLeagueName] = useState('');
     const [leagueDescription, setLeagueDescription] = useState('');
     const [nameErrorMessage, setNameErrorMessage] = useState('');
-    
-    
+
+
     const createLeague = (e) => {
         e.preventDefault();
 
-        if(leagueName === '') {
-           setNameErrorMessage('Please input a league name');
-           return;
+        if (leagueName === '') {
+            setNameErrorMessage('Please input a league name');
+            return;
         }
         //TODO: Tie this form to the back end
         console.log(leagueName)
@@ -26,29 +26,33 @@ const CreateLeague = () => {
     }
 
     return (
-    <>
-        <h3 className="page-title">Create a League</h3>
-        <form className="create-league-frm" onSubmit={createLeague}>
-            <div>
-                <h4 className='input-title'>Enter League Name</h4>
+        <div className="container text-center">
+            <h2 className="page-header">Create a League</h2>
+            <form className="create-league-frm" onSubmit={createLeague}>
                 <input
-                type='text'
-                value={leagueName}
-                onChange={(event) => setLeagueName(event.target.value)}
-                className='frm-input-title'
+                    placeholder="League Name"
+                    type='text'
+                    value={leagueName}
+                    onChange={(event) => setLeagueName(event.target.value)}
+                    className='frm-input'
                 />
-                {nameErrorMessage ? <p className='error-message'>{nameErrorMessage}</p> : null}
-                <h4 className='description-title'>Enter League Description</h4>
+
                 <textarea
-                type='text'
-                value={leagueDescription}
-                className='frm-textarea-description'
-                onChange={(event)=> setLeagueDescription(event.target.value)}
+                    placeholder="League Description"
+                    type='text'
+                    value={leagueDescription}
+                    className='frm-input'
+                    id='description'
+                    onChange={(event) => setLeagueDescription(event.target.value)}
                 />
-            </div>
-            <button type='submit' className='create-league-btn'>Submit</button>
-        </form>
-    </>
+                <div className='btn-container'>
+                    <button type='submit' className='create-league-btn'>Submit</button>
+                </div>
+                <div className='error-container'>
+                    {nameErrorMessage ? <h2 className='error-message'>{nameErrorMessage}</h2> : null}
+                </div>
+            </form>
+        </div>
     )
 };
 
