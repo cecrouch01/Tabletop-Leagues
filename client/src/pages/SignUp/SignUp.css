@@ -2,15 +2,25 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    background-color: black;
+  }
+  .page-header{
+    margin: 0;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: #ff914d;
   }
   .form {
-      margin: 20px;
+      /* margin: 20px 20px 0 20px; */
       display: flex;
       flex-direction: column;
       justify-content: center;
       width: 40%;
+      color: black;
     }
     
+    .form-color {
+      background-color: rgb(168, 168, 168);
+    }
     .form input, 
     #aboutMeBody{
       margin-top: 5px;
@@ -23,8 +33,12 @@
     }
   
     .sign-up-button {
+      background-color: rgb(168, 168, 168);
       display: flex;
       justify-content: center;
+      align-items: center;
+      align-content: center;
+      width:50%;
     }
   
     

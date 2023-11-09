@@ -63,6 +63,7 @@ export default function SignUp() {
             <h2 className="page-header">Sign Up</h2>
             <form className="form" onSubmit={handleFormSubmit}>
                 <input
+                    className='form-color'
                     value={firstName}
                     name="firstName"
                     onChange={handleInputChange}
@@ -70,6 +71,7 @@ export default function SignUp() {
                     placeholder="First Name"
                 />
                 <input
+                    className='form-color'
                     value={lastName}
                     name="lastName"
                     onChange={handleInputChange}
@@ -77,6 +79,7 @@ export default function SignUp() {
                     placeholder="Last Name"
                 />
                 <input
+                    className='form-color'
                     value={username}
                     name="username"
                     onChange={handleInputChange}
@@ -84,6 +87,7 @@ export default function SignUp() {
                     placeholder="Username"
                 />
                 <input
+                    className='form-color'
                     value={email}
                     name="email"
                     onChange={handleInputChange}
@@ -91,6 +95,7 @@ export default function SignUp() {
                     placeholder="Email"
                 />
                 <input
+                    className='form-color'
                     value={password}
                     name="password"
                     onChange={handleInputChange}
@@ -98,6 +103,7 @@ export default function SignUp() {
                     placeholder="Password"
                 />
                 <textarea
+                    className='form-color'
                     id='aboutMeBody'
                     value={aboutMe}
                     name="aboutMe"

@@ -7,7 +7,9 @@
 
 .icons {
     display: flex;
-    
+    justify-content: center;
+    align-items: center;
+    align-content: center;
 }
 
 .icon-item{
@@ -31,14 +33,23 @@
 .icon-item.active {
     -webkit-transition: all 1s ease;
     transition: 1s ease;
-    /* transition: border solid; */
     overflow: visible;
     font-size: 5.5em;
     cursor: pointer;
     color: #ff914d;
     background-color: black;
-    
 }
 
+.icon-selector-title {
+    margin: 0;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: #ff914d;
+}
+@media screen and (max-width: 900px){
+    .icon-item {
+        width: .75em;
+        height: .75em;
+    }
+}
 
 

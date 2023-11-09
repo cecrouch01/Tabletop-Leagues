@@ -15,7 +15,7 @@ export default function IconSelector() {
 
     return (
         <div className='icon-selector'>
-            <header><h2>Choose An Icon For Your Profile</h2></header>
+            <header className='icon-selector-title'><h2>Choose An Icon</h2></header>
             <div className='icons'>
                 <button onClick={() => handleClick('wings')} className={active === 'wings' ? 'icon-item active' : 'icon-item'}>< GiAngelWings /></button>
                 <button onClick={() => handleClick('aries')} className={active === 'aries' ? 'icon-item active' : 'icon-item'}><GiAries /></button>
