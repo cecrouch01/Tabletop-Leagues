@@ -6,7 +6,9 @@ type User {
     password: String!
     description: String
     icon: String
+    leagues: [League]
 }
+
 type League {
     _id: ID!
     name: String!
@@ -21,12 +23,12 @@ type Game: {
 }
 
 type GamePlayer {
-    player: User
+    player: User!
     place: Int
 }
 
 type Member {
-    user: User
+    user: User!
     admin: Boolean
     points: Int
 }
