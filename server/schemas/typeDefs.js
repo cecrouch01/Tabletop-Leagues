@@ -19,7 +19,7 @@ type League {
     active: Boolean!
 }
 
-type Game: {
+type Game {
     game: [GamePlayer]
 }
 
@@ -46,10 +46,10 @@ input userInput {
 }
 
     type Mutation {
-        loginUser(email: String!, password: String!)
-  addUser(username: String!, email: String!, password: String!, description: String, icon: String)
-  updateUser(id: ID!, username: String, email: String, password: String, description: String, icon: String, addToLeagues: [ID])
-  removeUser(_id: ID!)
+        loginUser(email: String!, password: String!):User
+        addUser(username: String!, email: String!, password: String!, description: String, icon: String):User
+        updateUser(id: ID!, username: String, email: String, password: String, description: String, icon: String, addToLeagues: [ID]):User
+        removeUser(_id: ID!):User
 
 }
 `;
