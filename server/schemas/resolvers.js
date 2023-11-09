@@ -1,13 +1,20 @@
 const { User, League } = require('../models');
 const { signToken, AuthenticationError } = require('../utils/auth');
+const bcrypt = require('bcrypt');
 
 const resolvers = {
     Query: {
       getUser: async (parent, arg, context) => {
-        if (!AudioContext.user){
-          throw new Error('Not Authenticated')
+        if (!context.user){
+          throw new Error(AuthenticationError)
         }
         return await User.findById(context.user._id);
+      },
+      getLeague: async (parent, arg, context) => {
+        if (!context.user){
+          throw new Error(AuthenticationError)
+        }
+        return await League.findById(context.league._id);
       },
 
     },
@@ -18,23 +25,23 @@ const resolvers = {
         const user = await User.findOne({ email });
 
         if(!user) {
-          throw new Error('User not found, Please check credentials again.')
+          throw new Error(AuthenticationError)
         }
         const isPassword = await user.isCorrectPassword(password);
 
         if(!isPassword) {
-          throw new Error('Incorrect passowrd, Please try again.')
+          throw new Error(AuthenticationError)
         }
         const token = signToken(user);
 
         return { token, user};
       },
 
-      addUser: async (parent, {username, email, password, description, icon}) => {
+      addUser: async (parent, ) => {
         const user = await User.create({username, email, password, description, icon});
 
         if (!user) {
-          throw new Error('Creating new user failed, please try again.');
+          throw new Error(AuthenticationError);
         }
         const token = signToken(user);
 
@@ -62,23 +69,22 @@ const resolvers = {
           const user = await User.findByIdAndUpdate(id, userUpdate, { new: true });
   
           if (!user) {
-            throw new Error('Updating user failed. Please try again.');
+            throw new Error(AuthenticationError);
           }
   
           const token = signToken(user);
   
           return { token, user };
         } catch (error) {
-          throw new Error('Failed to update user. Please try again.');
+          throw new Error(AuthenticationError);
         }
       },
   
-
       removeUser: async (parent, {_id}) => {
         const user = await User.delete(_id);
 
         if (!user) {
-          throw new Error('Removing new user failed, please try again.');
+          throw new Error(AuthenticationError);
         }
         const token = signToken(user);
 

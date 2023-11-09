@@ -32,6 +32,13 @@ type Member {
     user: User!
     points: Int
 }
+input userInput {
+    username: String
+    email: String
+    password: String
+    description: String
+    icon: String
+}
 
     type Query {
 
