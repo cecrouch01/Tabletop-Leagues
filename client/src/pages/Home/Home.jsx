@@ -1,4 +1,6 @@
 import Card from "../../components/Card/Card";
+import LeagueCard from "../../components/LeagueCard/LeagueCard";
+import UserCard from "../../components/UserCard/UserCard";
 import './Home.css';
 const Home = () => {
     const highScores = [1,2,3,4,5]
@@ -8,13 +10,13 @@ const Home = () => {
         <div>
             <h3>Skilled Users</h3>
             {highScores.map((user, index) => {
-                return <Card key={index} type='user' />
+                return <UserCard key={index}  />
             })}
         </div>
         <div>
          <h3>Top Leagues</h3>
             {topLeagues.map((league, index) => {
-                return <Card key={index} type='league' />
+                return <LeagueCard key={index}/>
             })}
         </div>
     </div>

@@ -1,12 +1,21 @@
 .card {
-    border: 2px solid black;
-    width: 30vw;
-    height: 20vh;
+    border: 1px solid rgb(220, 216, 216);
+    width: 400px;
+    height: auto;
     margin-top: 10px;
     margin-bottom: 10px;
+    box-shadow: 0 2px 6px 1px gray;
+    border-radius: 7px;
+    transition: all .5s;
 }
 
-.dshbrd-user-card {
-    margin: 10px 35vw 10px 35vw;
+.card:hover {
+    box-shadow: 0 2px 6px 1px #ff914d;
+    transition: all .5s;
 }
 
+@media screen and (max-width: 402px) {
+    .card {
+        width: 100vw;
+    }
+}

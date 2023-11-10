@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import './SignUp.css';
 import { validateEmail, checkPassword } from '../../utils/helpers';
+import IconSelector from '../../components/IconSelector/IconSelector';
 
 export default function SignUp() {
     const [firstName, setFirstName] = useState('');
@@ -62,6 +63,7 @@ export default function SignUp() {
             <h2 className="page-header">Sign Up</h2>
             <form className="form" onSubmit={handleFormSubmit}>
                 <input
+                    className='form-color'
                     value={firstName}
                     name="firstName"
                     onChange={handleInputChange}
@@ -69,6 +71,7 @@ export default function SignUp() {
                     placeholder="First Name"
                 />
                 <input
+                    className='form-color'
                     value={lastName}
                     name="lastName"
                     onChange={handleInputChange}
@@ -76,6 +79,7 @@ export default function SignUp() {
                     placeholder="Last Name"
                 />
                 <input
+                    className='form-color'
                     value={username}
                     name="username"
                     onChange={handleInputChange}
@@ -83,6 +87,7 @@ export default function SignUp() {
                     placeholder="Username"
                 />
                 <input
+                    className='form-color'
                     value={email}
                     name="email"
                     onChange={handleInputChange}
@@ -90,6 +95,7 @@ export default function SignUp() {
                     placeholder="Email"
                 />
                 <input
+                    className='form-color'
                     value={password}
                     name="password"
                     onChange={handleInputChange}
@@ -97,6 +103,7 @@ export default function SignUp() {
                     placeholder="Password"
                 />
                 <textarea
+                    className='form-color'
                     id='aboutMeBody'
                     value={aboutMe}
                     name="aboutMe"
@@ -104,11 +111,14 @@ export default function SignUp() {
                     type="aboutMe"
                     placeholder="Tell us about yourself"
                 />
-                <button className="sign-up-button" type="signUp">Sign Up</button>
+                <IconSelector />
+                <div className='btn-container'>
+                    <button className="sign-up-button" type="signUp">Sign Up</button>
+                </div>
             </form>
             {errorMessage && (
                 <div>
-                    <p className="error-text">{errorMessage}</p>
+                    <h2 className="error-text">{errorMessage}</h2>
                 </div>
             )}
         </div>

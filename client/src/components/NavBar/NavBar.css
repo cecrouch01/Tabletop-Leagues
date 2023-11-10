@@ -1,41 +1,75 @@
-.navbar {
+.header {
     display:flex;
     background-color: black;
-    justify-content: center;
+    /* justify-content: center; */
     width: 100%;
 }
 
-.navbar-text {
-    color:white;
+.header-top {
+    width: 100%;
     display: flex;
-} 
+    flex-direction:row;
+    justify-content: center;
+}
+
+.logo {
+    width: 25%;
+    height: auto;
+    margin: 0 2em;
+    
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-evenly;
+    background-color: black;
+    width: 100%;
+    height: auto;
+    
+}
+
 .nav-link {
-    color: white;
-}
-
-.title-subtitle {
-    margin-right: 30em;
-}
-.navbar-title {
-    padding: 0 1em 0 .25em;
-    font-size: 3.5em;
-    
-}
-
-.sub-title {
-    display:flex;
-    
-}
-
-.login-signUp-link {
-    display:flex;
+    color: #ff914d;
+    display: flex;
+    flex-direction: row;
     align-items: center;
+    text-decoration: none;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: #d84727;
 }
 
-.login-signUp-link-text {
-    padding: 0 1em;
+.nav-text {
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 2em;
+    -webkit-transition: all 1s ease;
 }
 
-.league-link-text {
-    padding: 0 1em;
+.nav-text:hover {
+    -webkit-transition: all 1s ease;
+    font-size: 2.15em;
+}
+@media screen and (max-width: 900px) {
+    .navbar{
+        flex-direction: column;
+        align-items: center;
+        padding-bottom: 1em;
+    }
+    
+    .logo{
+        width: 45%;
+        height: auto;
+    }
+    .nav-text{
+    font-size: 1em;
+    }
+
+    .nav-text:hover {
+        -webkit-transition: all 1s ease;
+        font-size: 1.15em;
+    }
+
+    .nav-link{
+        margin: -.75em;
+    }
+    
 }
