@@ -10,9 +10,11 @@ height: 100%;
 
 .league-name {
     margin-bottom: 10px;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 .league-description {
     margin-top: 10px;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 .league-list {
@@ -20,6 +22,7 @@ height: 100%;
     justify-content: space-between;
     flex-wrap: wrap;
     padding-inline-start: 0;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 li {
     list-style-type: none;

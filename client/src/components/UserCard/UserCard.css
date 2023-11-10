@@ -1,8 +1,12 @@
+.card {
+    background-color: rgb(168, 168, 168);
+}
 .user-card-contents {
     margin-left: 20px;
     display: flex;
 }
 .username, .stats {
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     margin-top: 10px;
     text-align: center;
 }
@@ -26,6 +30,7 @@
 
 .stat-list {
     list-style-type: none;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 li {
     margin-bottom: 10px;
