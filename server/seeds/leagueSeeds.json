@@ -1,0 +1,312 @@
+[
+    {
+      "name": "League1",
+      "description": "Description for LeagueA",
+      "admin": "user1",
+      "members": [
+        {"user": "user1", "points": 8},
+        {"user": "user2", "points": 6},
+        {"user": "user3", "points": 4},
+        {"user": "user4", "points": 2}
+      ],
+      "games": [
+            {
+                "game": [
+                  {"user": "user1", "place": 1},
+                  {"user": "user2", "place": 2},
+                  {"user": "user3", "place": 3},
+                  {"user": "user4", "place": 4}
+                ]
+            },
+            {
+                "game": [
+                  {"user": "user1", "place": 1},
+                  {"user": "user2", "place": 2},
+                  {"user": "user3", "place": 3},
+                  {"user": "user4", "place": 4}
+                ]
+            }
+        ],
+      "active": true,
+      "password": "test"
+    },
+    {
+      "name": "League2",
+      "description": "Description for LeagueB",
+      "admin": "user2",
+      "members": [
+        {"user": "user1", "points": 8},
+        {"user": "user2", "points": 6},
+        {"user": "user3", "points": 4},
+        {"user": "user4", "points": 2}
+      ],
+      "games": [
+        {
+            "game": [
+              {"user": "user1", "place": 1},
+              {"user": "user2", "place": 2},
+              {"user": "user3", "place": 3},
+              {"user": "user4", "place": 4}
+            ]
+        },
+        {
+            "game": [
+              {"user": "user1", "place": 1},
+              {"user": "user2", "place": 2},
+              {"user": "user3", "place": 3},
+              {"user": "user4", "place": 4}
+            ]
+        }
+    ],
+      "active": true,
+      "password": "test"
+    },
+    {
+      "name": "League3",
+      "description": "Description for LeagueC",
+      "admin": "user3",
+      "members": [
+        {"user": "user1", "points": 8},
+        {"user": "user2", "points": 6},
+        {"user": "user3", "points": 4},
+        {"user": "user4", "points": 2}
+      ],
+      "games": [
+        {
+            "game": [
+              {"user": "user1", "place": 1},
+              {"user": "user2", "place": 2},
+              {"user": "user3", "place": 3},
+              {"user": "user4", "place": 4}
+            ]
+        },
+        {
+            "game": [
+              {"user": "user1", "place": 1},
+              {"user": "user2", "place": 2},
+              {"user": "user3", "place": 3},
+              {"user": "user4", "place": 4}
+            ]
+        }
+    ],
+      "active": true,
+      "password": "test"
+    },
+    {
+      "name": "League4",
+      "description": "Description for LeagueD",
+      "admin": "user4",
+      "members": [
+        {"user": "user1", "points": 8},
+        {"user": "user2", "points": 6},
+        {"user": "user3", "points": 4},
+        {"user": "user4", "points": 2}
+      ],
+      "games": [
+            {
+                "game": [
+                  {"user": "user1", "place": 1},
+                  {"user": "user2", "place": 2},
+                  {"user": "user3", "place": 3},
+                  {"user": "user4", "place": 4}
+                ]
+            },
+            {
+                "game": [
+                  {"user": "user1", "place": 1},
+                  {"user": "user2", "place": 2},
+                  {"user": "user3", "place": 3},
+                  {"user": "user4", "place": 4}
+                ]
+            }
+        ],
+      "active": true,
+      "password": "test"
+    },
+    {
+      "name": "League5",
+      "description": "Description for LeagueE",
+      "admin": "user5",
+      "members": [
+        {"user": "user5", "points": 8},
+        {"user": "user6", "points": 6},
+        {"user": "user7", "points": 4},
+        {"user": "user8", "points": 2}
+      ],
+      "games": [
+        {
+            "game": [
+              {"user": "user5", "place": 1},
+              {"user": "user6", "place": 2},
+              {"user": "user7", "place": 3},
+              {"user": "user8", "place": 4}
+            ]
+        },
+        {
+            "game": [
+              {"user": "user5", "place": 1},
+              {"user": "user6", "place": 2},
+              {"user": "user7", "place": 3},
+              {"user": "user8", "place": 4}
+            ]
+        }
+    ],
+      "active": true,
+      "password": "test"
+    },
+    {
+      "name": "League6",
+      "description": "Description for LeagueF",
+      "admin": "user6",
+      "members": [
+        {"user": "user5", "points": 8},
+        {"user": "user6", "points": 6},
+        {"user": "user7", "points": 4},
+        {"user": "user8", "points": 2}
+      ],
+      "games": [
+        {
+            "game": [
+              {"user": "user5", "place": 1},
+              {"user": "user6", "place": 2},
+              {"user": "user7", "place": 3},
+              {"user": "user8", "place": 4}
+            ]
+        },
+        {
+            "game": [
+              {"user": "user5", "place": 1},
+              {"user": "user6", "place": 2},
+              {"user": "user7", "place": 3},
+              {"user": "user8", "place": 4}
+            ]
+        }
+    ],
+      "active": true,
+      "password": "test"
+    },
+    {
+      "name": "League7",
+      "description": "Description for LeagueG",
+      "admin": "user7",
+      "members": [
+        {"user": "user5", "points": 8},
+        {"user": "user6", "points": 6},
+        {"user": "user7", "points": 4},
+        {"user": "user8", "points": 2}
+      ],
+      "games": [
+        {
+            "game": [
+              {"user": "user5", "place": 1},
+              {"user": "user6", "place": 2},
+              {"user": "user7", "place": 3},
+              {"user": "user8", "place": 4}
+            ]
+        },
+        {
+            "game": [
+              {"user": "user5", "place": 1},
+              {"user": "user6", "place": 2},
+              {"user": "user7", "place": 3},
+              {"user": "user8", "place": 4}
+            ]
+        }
+    ],
+      "active": true,
+      "password": "test"
+    },
+    {
+      "name": "League8",
+      "description": "Description for LeagueH",
+      "admin": "user8",
+      "members": [
+        {"user": "user5", "points": 8},
+        {"user": "user6", "points": 6},
+        {"user": "user7", "points": 4},
+        {"user": "user8", "points": 2}
+      ],
+      "games": [
+        {
+            "game": [
+              {"user": "user5", "place": 1},
+              {"user": "user6", "place": 2},
+              {"user": "user7", "place": 3},
+              {"user": "user8", "place": 4}
+            ]
+        },
+        {
+            "game": [
+              {"user": "user5", "place": 1},
+              {"user": "user6", "place": 2},
+              {"user": "user7", "place": 3},
+              {"user": "user8", "place": 4}
+            ]
+        }
+    ],
+      "active": true,
+      "password": "test"
+    },
+    {
+      "name": "League9",
+      "description": "Description for LeagueI",
+      "admin": "user9",
+      "members": [
+        {"user": "user7", "points": 8},
+        {"user": "user8", "points": 6},
+        {"user": "user9", "points": 4},
+        {"user": "user10", "points": 2}
+      ],
+      "games": [
+        {
+            "game": [
+              {"user": "user7", "place": 1},
+              {"user": "user8", "place": 2},
+              {"user": "user9", "place": 3},
+              {"user": "user10", "place": 4}
+            ]
+        },
+        {
+            "game": [
+              {"user": "user7", "place": 1},
+              {"user": "user8", "place": 2},
+              {"user": "user9", "place": 3},
+              {"user": "user10", "place": 4}
+            ]
+        }
+    ],
+      "active": true,
+      "password": "test"
+    },
+    {
+      "name": "League10",
+      "description": "Description for LeagueJ",
+      "admin": "user10",
+      "members": [
+        {"user": "user7", "points": 8},
+        {"user": "user8", "points": 6},
+        {"user": "user9", "points": 4},
+        {"user": "user10", "points": 2}
+      ],
+      "games": [
+        {
+            "game": [
+              {"user": "user7", "place": 1},
+              {"user": "user8", "place": 2},
+              {"user": "user9", "place": 3},
+              {"user": "user10", "place": 4}
+            ]
+        },
+        {
+            "game": [
+              {"user": "user7", "place": 1},
+              {"user": "user8", "place": 2},
+              {"user": "user9", "place": 3},
+              {"user": "user10", "place": 4}
+            ]
+        }
+    ],
+      "active": true,
+      "password": "test"
+    }
+]

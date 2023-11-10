@@ -1,0 +1,172 @@
+[
+    {
+      "username": "user1",
+      "leagues": [
+        {
+          "league": "League1"
+        },
+        {
+          "league": "League2"
+        },
+        {
+          "league": "League3"
+        },
+        {
+          "league": "League4"
+        }
+      ]
+    },
+    {
+      "username": "user2",
+      "leagues": [
+        {
+          "league": "League1"
+        },
+        {
+          "league": "League2"
+        },
+        {
+          "league": "League3"
+        },
+        {
+          "league": "League4"
+        }
+      ]
+    },
+    {
+      "username": "user3",
+      "leagues": [
+        {
+          "league": "League1"
+        },
+        {
+          "league": "League2"
+        },
+        {
+          "league": "League3"
+        },
+        {
+          "league": "League4"
+        }
+      ]
+    },
+    {
+      "username": "user4",
+      "leagues": [
+        {
+          "league": "League1"
+        },
+        {
+          "league": "League2"
+        },
+        {
+          "league": "League3"
+        },
+        {
+          "league": "League4"
+        }
+      ]
+    },
+    {
+      "username": "user5",
+      "leagues": [
+        {
+          "league": "League5"
+        },
+        {
+          "league": "League6"
+        },
+        {
+          "league": "League7"
+        },
+        {
+          "league": "League8"
+        }
+      ]
+    },
+    {
+      "username": "user6",
+      "leagues": [
+        {
+          "league": "League5"
+        },
+        {
+          "league": "League6"
+        },
+        {
+          "league": "League7"
+        },
+        {
+          "league": "League8"
+        }
+      ]
+    },
+    {
+      "username": "user7",
+      "leagues": [
+        {
+          "league": "League5"
+        },
+        {
+          "league": "League6"
+        },
+        {
+          "league": "League7"
+        },
+        {
+          "league": "League8"
+        },
+        {
+          "league": "League9"
+        },
+        {
+          "league": "League10"
+        }
+      ]
+    },
+    {
+      "username": "user8",
+      "leagues": [
+        {
+          "league": "League5"
+        },
+        {
+          "league": "League6"
+        },
+        {
+          "league": "League7"
+        },
+        {
+          "league": "League8"
+        },
+        {
+          "league": "League9"
+        },
+        {
+          "league": "League10"
+        }
+      ]
+    },
+    {
+      "username": "user9",
+      "leagues": [
+        {
+          "league": "League9"
+        },
+        {
+          "league": "League10"
+        }
+      ]
+    },
+    {
+      "username": "user10",
+      "leagues": [
+        {
+          "league": "League9"
+        },
+        {
+          "league": "League10"
+        }
+      ]
+    }
+  ]
