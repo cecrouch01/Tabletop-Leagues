@@ -65,6 +65,7 @@
 .error-container {
     display: flex;
     justify-content: center;
+    text-align: center;
 }
 .error-message {
     margin: 0;

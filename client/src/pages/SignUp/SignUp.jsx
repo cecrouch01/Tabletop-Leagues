@@ -115,7 +115,6 @@ export default function SignUp() {
                 <div className='btn-container'>
                     <button className="sign-up-button" type="signUp">Sign Up</button>
                 </div>
-                {/* <button className="sign-up-button" type="signUp">Sign Up</button> */}
             </form>
             {errorMessage && (
                 <div>
