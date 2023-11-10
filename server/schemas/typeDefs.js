@@ -18,7 +18,6 @@ type League {
     members: [Member]!
     games: [Game]
     active: Boolean!
-    winner: User
     password: String!
 }
 
