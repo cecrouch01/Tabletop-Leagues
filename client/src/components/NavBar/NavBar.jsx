@@ -9,7 +9,9 @@ const NavBar = () => {
         <>
             <header className="header">
                 <section className='header-top'>
-                    <img className='logo' src='/COLOSSEUM.png'></img>
+                    <Link className='link' to='/'>
+                        <img className='logo' src='/COLOSSEUM.png'></img>
+                    </Link>
                 </section>
             </header>
             <nav className='navbar'>
@@ -49,8 +51,6 @@ const NavBar = () => {
                 >
                     <h3 className='nav-text'>Login</h3>
                 </Link>
-
-
             </nav>
         </>
     );
