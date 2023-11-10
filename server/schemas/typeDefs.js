@@ -4,7 +4,7 @@ type User {
     username: String!
     email: String!
     password: String!
-    wins: INT
+    wins: Int
     description: String
     icon: String
     leagues: [League]
@@ -51,7 +51,7 @@ input userInput {
     type Mutation {
         loginUser(email: String!, password: String!):User
         addUser(username: String!, email: String!, password: String!, description: String, icon: String):User
-        updateUser(id: ID!, wins: INT, username: String, email: String, password: String, description: String, icon: String, addToLeagues: [ID]):User
+        updateUser(id: ID!, wins: Int, username: String, email: String, password: String, description: String, icon: String, addToLeagues: [ID]):User
         removeUser(_id: ID!):User
 
 }
