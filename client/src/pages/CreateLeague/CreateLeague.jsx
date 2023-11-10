@@ -15,7 +15,6 @@ const CreateLeague = () => {
 
     const createLeague = (e) => {
         e.preventDefault();
-
         if (leagueName === '') {
             setNameErrorMessage('Please input a league name');
             return;

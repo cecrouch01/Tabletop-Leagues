@@ -4,6 +4,7 @@ height: 100%;
 .league-contents {
     display: flex;
     align-items: center;
+    flex-direction: column;
     margin-left: 10px;
     margin-right: 10px
 }

@@ -1,0 +1,66 @@
+.join-league-container {
+    background-color: black;
+}
+.search-form{
+    display: flex;
+    justify-content: center;
+    margin: 10px 0 10px 0;
+}
+.search-bar {
+    height: 50px;
+    width: 40vw;
+    background-color: rgb(168, 168, 168);
+    border-radius: 20px 0 0 20px;
+    padding: 5px;
+    outline: none;
+}
+
+.search-bar:focus {
+    outline: none;
+}
+
+.search-btn {
+    border-radius: 0 20px 20px 0;
+    border-left: 0;
+    border: 1px solid black;
+    background-color: #ff914d;
+    transition: all .5s;
+}
+.search-btn:hover {
+    color:#ff914d;
+    background-color: black;
+    border: 1px solid #ff914d;
+    box-shadow: 0 2px 6px 1px #ff914d;
+    transition: all .5s;
+}
+.search-icon {
+    padding: 5px;
+    font-size: 2em;
+}
+.view-league {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.join-btn {
+    margin-bottom: 10px;
+    padding: 10px 30px 10px 30px;
+    border: 1px solid black;
+    border-radius: 20px;
+    background-color: #ff914d;
+    transition: all .5s;
+}
+.join-btn:hover {
+    color:#ff914d;
+    background-color: black;
+    border: 1px solid #ff914d;
+    box-shadow: 0 2px 6px 1px #ff914d;
+    transition: all .5s;
+}
+
+@media screen and (max-width: 800px) {
+    .search-bar{
+        width: 50vw;
+    }
+}
