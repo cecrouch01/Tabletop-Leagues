@@ -53,10 +53,6 @@ const leagueSchema = new Schema ({
     games: [
         gameSchema
     ],
-    winner: {
-        type: Schema.Types.ObjectId,
-        ref: 'user'
-    },
     active: {
         type: Boolean,
         required: true,
