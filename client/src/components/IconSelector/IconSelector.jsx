@@ -5,7 +5,6 @@ import { GiBattleAxe } from 'react-icons/gi';
 import { GiBull } from "react-icons/gi";
 import { GiAlienSkull } from 'react-icons/gi';
 import { useState } from 'react';
-import 'react-bootstrap';
 
 export default function IconSelector() {
     const [active, setActive] = useState("");

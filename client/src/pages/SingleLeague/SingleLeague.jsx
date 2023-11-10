@@ -1,52 +1,27 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
-import { useQuery, useMutation, gql } from '@apollo/client';
+import { useQuery, useMutation } from '@apollo/client';
 import './SingleLeague.css';
 import AuthService from '../../utils/auth'; 
 
-// GraphQL query for fetching a single league's details
-const GET_LEAGUE_DETAILS = gql`
-  query GetLeagueDetails($leagueId: ID!) {
-    league(id: $leagueId) {
-      id
-      name
-      game
-      organizer {
-        name
-        contactDetails
-      }
-      numberOfPlayers
-      startDate
-      endDate
-      records {
-        playerId
-        wins 
-        losses
-      }
-      members {
-        id
-        name
-      }
+const league = { 
+  id: "Jdemasse", 
+  name: "Joseph DeMasse", 
+  game: "Yugioh",
+  organizer: {
+    name: "Caleb Crouch",
+    contactDetails: "ThisIsMyEmail@gmail.com",
+    records: {
+      id: "some_player_id",
+      wins: 10,
+      losses: 5, 
+    },
+    members: {
+      id: "some_member_id", // Replace with actual member ID
+      name: "Member Name" // Replace with actual member name
     }
   }
-`;
-
-// GraphQL mutation for joining a league
-const JOIN_LEAGUE = gql`
-  mutation JoinLeague($leagueId: ID!) {
-    joinLeague(leagueId: $leagueId) {
-      success
-      message
-      league {
-        id
-        members {
-          id
-          name
-        }
-      }
-    }
-  }
-`;
+}
 
 const SingleLeague = () => {
   const { leagueId } = useParams();
