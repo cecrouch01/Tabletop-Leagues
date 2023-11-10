@@ -90,7 +90,38 @@ const resolvers = {
         return {token, user};
       },
 
+      addLeague: async (parent, { name, description, admin, active, password }) => {
+        try {
+          let adminUser;
 
+          if (context.user._id) {
+            adminUser = await User.findById(context.user._id); 
+          }
+
+          const leagueData = {
+            name,
+            description, 
+            active,
+            password,
+            admin: adminUser,
+          };
+  
+          const league = await League.create(leagueData);
+
+          if (!league) {
+            throw new AuthenticationError('Failed to create league'); 
+          }
+
+          const user = adminUser;
+
+          const token = signToken(user);
+
+          return { token, league };
+        } catch (error) {
+          throw new AuthenticationError('An error occurred'); 
+        }
+      },
+      updateLeague: async (parent, { active, members, winner }) => { },
     },
   };
   
