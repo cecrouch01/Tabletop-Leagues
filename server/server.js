@@ -2,13 +2,19 @@ const express = require('express');
 const { ApolloServer } = require('@apollo/server');
 const { expressMiddleware } = require('@apollo/server/express4');
 const { authMiddleware } = require('./utils/auth');
-const { typeDefs, resolvers } = require('./schemas');
+const { typeDefs, resolvers, permissions } = require('./schemas');
 const db = require('./config/connection');
+const { applyMiddleware } = require('graphql-middleware');
+const { makeExecutableSchema } = require('@graphql-tools/schema');
+
+const schema = applyMiddleware(makeExecutableSchema({ 
+    typeDefs,
+    resolvers
+}), permissions);
 
 const PORT = process.env.PORT || 3001;
 const server = new ApolloServer({
-    typeDefs,
-    resolvers
+    schema
 });
 
 const app = express();

@@ -1,12 +1,17 @@
 const { shield, rule } = require('graphql-shield');
-const { makeExecutableSchema } = require('@graphql-tools/schema');
 
-const { applyMiddleware } = require('graphql-middleware');
+
 
 const isLeagueAdmin = rule()(async (parent, args, ctx, info) => {
     console.log(args);
     console.log(ctx);
- return ctx?.user?.role === 'admin'
+    if (args.leagueId) {
+        const league = League.findById(args.leagueId);
+        return league.admins.contains(ctx.user._id);
+    }
+
+    return false
+    // return ctx?.user?.role === 'admin'
 })
 
 
@@ -17,7 +22,4 @@ const permissions = shield({
     }
 })
 
-const schema = applyMiddleware(makeExecutableSchema({ 
-    typeDefs,
-    resolvers
-}), permissions)
+module.exports = permissions;
