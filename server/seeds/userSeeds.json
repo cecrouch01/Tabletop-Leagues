@@ -5,7 +5,7 @@
       "password": "test",
       "wins": 4,
       "description": "Description for user 1",
-      "icon": "user1-icon-url"
+      "icon": "alien"
     },
     {
       "username": "user2",
@@ -13,7 +13,7 @@
       "password": "test",
       "wins": 0,
       "description": "Description for user 2",
-      "icon": "user2-icon-url"
+      "icon": "angel"
     },
     {
       "username": "user3",
@@ -21,7 +21,7 @@
       "password": "test",
       "wins": 0,
       "description": "Description for user 3",
-      "icon": "user3-icon-url"
+      "icon": "aries"
     },
     {
       "username": "user4",
@@ -29,7 +29,7 @@
       "password": "test",
       "wins": 0,
       "description": "Description for user 4",
-      "icon": "user4-icon-url"
+      "icon": "battle-axe"
     },
     {
       "username": "user5",
@@ -37,7 +37,7 @@
       "password": "test",
       "wins": 4,
       "description": "Description for user 5",
-      "icon": "user5-icon-url"
+      "icon": "bull"
     },
     {
       "username": "user6",
@@ -45,7 +45,7 @@
       "password": "test",
       "wins": 0,
       "description": "Description for user 6",
-      "icon": "user6-icon-url"
+      "icon": "alien"
     },
     {
       "username": "user7",
@@ -53,7 +53,7 @@
       "password": "test",
       "wins": 2,
       "description": "Description for user 7",
-      "icon": "user7-icon-url"
+      "icon": "angel"
     },
     {
       "username": "user8",
@@ -61,7 +61,7 @@
       "password": "test",
       "wins": 0,
       "description": "Description for user 8",
-      "icon": "user8-icon-url"
+      "icon": "aries"
     },
     {
       "username": "user9",
@@ -69,7 +69,7 @@
       "password": "test",
       "wins": 0,
       "description": "Description for user 9",
-      "icon": "user9-icon-url"
+      "icon": "battle-axe"
     },
     {
       "username": "user10",
@@ -77,6 +77,6 @@
       "password": "test",
       "wins": 0,
       "description": "Description for user 10",
-      "icon": "user10-icon-url"
+      "icon": "bull"
     }
   ]
