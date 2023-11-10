@@ -21,6 +21,9 @@ const userSchema = new Schema ({
         unique: true,
 
     },
+    wins: {
+      type: Number,
+    },
     description: {
         type: String,
 

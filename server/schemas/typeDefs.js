@@ -4,6 +4,7 @@ type User {
     username: String!
     email: String!
     password: String!
+    wins: INT
     description: String
     icon: String
     leagues: [League]
@@ -17,6 +18,8 @@ type League {
     members: [Member]!
     games: [Game]
     active: Boolean!
+    winner: User
+    password: String!
 }
 
 type Game {
@@ -48,7 +51,7 @@ input userInput {
     type Mutation {
         loginUser(email: String!, password: String!):User
         addUser(username: String!, email: String!, password: String!, description: String, icon: String):User
-        updateUser(id: ID!, username: String, email: String, password: String, description: String, icon: String, addToLeagues: [ID]):User
+        updateUser(id: ID!, wins: INT, username: String, email: String, password: String, description: String, icon: String, addToLeagues: [ID]):User
         removeUser(_id: ID!):User
 
 }
