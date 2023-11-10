@@ -41,19 +41,25 @@ input userInput {
     description: String
     icon: String
 }
+input MembersInput {
+          league: ID!
+        }
+
 
     type Query {
         getUser: User!
         getLeague: League!
-}
-
+}             
+    
     type Mutation {
         loginUser(email: String!, password: String!):User
         addUser(username: String!, email: String!, password: String!, description: String, icon: String):User
         updateUser(id: ID!, wins: Int, username: String, email: String, password: String, description: String, icon: String, addToLeagues: [ID]):User
         removeUser(_id: ID!):User
-
-}
+        addLeague( name: String! description: String! admin: ID active: Boolean! password: String!): League
+        updateLeague(active: Boolean members: MembersInput): League
+        }
+        
 `;
 
 module.exports = typeDefs;
