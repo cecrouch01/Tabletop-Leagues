@@ -1,7 +1,7 @@
 import Card from '../Card/Card'
 
 import './LeagueCard.css'
-const LeagueCard = () => {
+const LeagueCard = ({children}) => {
     return (
     <Card>
         <div className='league-card-contents'>
@@ -16,6 +16,7 @@ const LeagueCard = () => {
                         <li >Size: X players </li>
                     </ul>
                 </div>
+                {children}
             </div>
         </div>
     </Card>
