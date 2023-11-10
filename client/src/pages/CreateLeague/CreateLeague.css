@@ -31,6 +31,10 @@
     border-radius: 4px;
 }
 
+.frm-input:focus {
+    outline-color:#d84727
+}
+
 #description {
     height: 5em;
 }
