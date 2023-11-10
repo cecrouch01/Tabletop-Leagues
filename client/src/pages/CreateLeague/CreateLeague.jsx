@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { checkPassword } from '../../utils/helpers';
 import { useColosseumContext } from '../../utils/ColosseumContext';
 import { TEST } from '../../utils/actions';
 
@@ -6,7 +7,9 @@ import './CreateLeague.css';
 
 const CreateLeague = () => {
     const [leagueName, setLeagueName] = useState('');
+    const [password, setPassword] = useState('');
     const [leagueDescription, setLeagueDescription] = useState('');
+    const [passwordErrorMessage, setPasswordErrorMessage] = useState('');
     const [nameErrorMessage, setNameErrorMessage] = useState('');
 
 
@@ -16,11 +19,19 @@ const CreateLeague = () => {
         if (leagueName === '') {
             setNameErrorMessage('Please input a league name');
             return;
+        } else if (!checkPassword(password)) {
+            setPasswordErrorMessage(
+                `Password must contain 8 characters including numbers and letters`
+            );
+            return;
         }
+
+        alert(`${leagueName} created!`);
         //TODO: Tie this form to the back end
         console.log(leagueName)
         console.log(leagueDescription)
         setLeagueName('');
+        setPassword('');
         setLeagueDescription('');
         setNameErrorMessage('');
     }
@@ -34,6 +45,13 @@ const CreateLeague = () => {
                     type='text'
                     value={leagueName}
                     onChange={(event) => setLeagueName(event.target.value)}
+                    className='frm-input'
+                />
+                <input
+                    placeholder="Create Password"
+                    type='password'
+                    value={password}
+                    onChange={(event) => setPassword(event.target.value)}
                     className='frm-input'
                 />
 
@@ -50,6 +68,7 @@ const CreateLeague = () => {
                 </div>
                 <div className='error-container'>
                     {nameErrorMessage ? <h2 className='error-message'>{nameErrorMessage}</h2> : null}
+                    {passwordErrorMessage ? <h2 className='error-message'>{passwordErrorMessage}</h2> : null}
                 </div>
             </form>
         </div>
