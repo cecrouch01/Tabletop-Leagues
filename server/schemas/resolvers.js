@@ -4,11 +4,17 @@ const bcrypt = require('bcrypt');
 
 const resolvers = {
     Query: {
-      getUser: async (parent, arg, context) => {
+      getMe: async (parent, arg, context) => {
         if (!context.user){
           throw new Error(AuthenticationError)
         }
         return await User.findById(context.user._id);
+      },
+      getUser: async (parent, arg, user) => {
+        if (user){
+          throw new Error(AuthenticationError)
+        }
+        return await User.findById(user._id);
       },
       getLeague: async (parent, arg, context) => {
         if (!context.user){
@@ -166,6 +172,62 @@ const resolvers = {
           throw new AuthenticationError('An error occurred');
         } 
       },
+      addMember: async (parent, context, {members}) => {
+        try {
+          if (!context.user || !context.user._id) {
+            throw new AuthenticationError('User not authenticated');
+          }
+  
+          const user = await User.findById(context.user._id);
+  
+          if (members) {
+            const newMember = {
+              user: user._id,
+            };
+  
+            const updatedLeague = await League.findOneAndUpdate(
+              { _id: members.league._id },
+              { $push: { members: newMember } },
+              { new: true }
+            );
+  
+            return { success: true, message: 'Member added successfully', league: updatedLeague };
+          }
+  
+          throw new AuthenticationError('No valid parameters provided');
+        } catch (error) {
+
+          throw new AuthenticationError('An error occurred');
+        }
+      },
+
+      deactivateLeague: async (parent, { active } ) => {
+        try {
+          if (!active) {
+            throw new AuthenticationError('No valid parameters provided');
+          }
+  
+          const leagueActive = await League.findById(active);
+  
+          if (!leagueActive) {
+            throw new AuthenticationError('Active League not found.');
+          }
+  
+          leagueActive.active = !leagueActive.active;
+  
+          const updatedActive = await leagueActive.save();
+  
+          return {
+            success: true,
+            message: 'League successfully activated/deactivated',
+            object: updatedActive,
+          };
+        } catch (error) {
+          console.error(error);
+          throw new AuthenticationError('An error occurred');
+        }
+      },
+
     },
     
   };
