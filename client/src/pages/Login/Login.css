@@ -28,6 +28,10 @@
     .form-color {
       background-color: rgb(168, 168, 168);
     }
+
+    .form-color:focus {
+      outline-color: #d84727;
+    }
     
     .form input{
       margin-top: 5px;
