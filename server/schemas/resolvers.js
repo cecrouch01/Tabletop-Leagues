@@ -4,11 +4,11 @@ const bcrypt = require('bcrypt');
 
 const resolvers = {
     Query: {
-      getMe: async (parent, context) => {
-        if (!context.user){
-          throw new Error(AuthenticationError)
+      getMe: async (parent, args, context) => {
+        if (context.user) {
+          return User.findOne({ _id: context.user._id });
         }
-        return await User.findOne(context.user._id);
+        throw AuthenticationError;
       },
       getUser: async (parent, user) => {
         return await User.findOne(user._id);
@@ -16,11 +16,11 @@ const resolvers = {
       allUsers: async () => {
         return await User.find();
       },
-      getLeague: async (parent, context) => {
+      getLeagues: async (parent, context) => {
         if (!context.user){
           throw new Error(AuthenticationError)
         }
-        return await League.findOne(context.league._id);
+        return await League.find(context.league._id);
       },
 
     },
