@@ -8,54 +8,37 @@ const SingleLeague = () => {
   const { leagueId } = useParams();
   const [leagueDetails, setLeagueDetails] = useState(null);
   const [isError, setIsError] = useState(false);
+  const [userRecords, setUserRecords] = useState([]);
 
-  /* Test Data - Uncomment for development/testing */
-  /*
-  const league = {
-    id: "Jdemasse",
-    name: "Joseph DeMasse",
-    game: "Yugioh",
-    organizer: {
-      name: "Caleb Crouch",
-      contactDetails: "ThisIsMyEmail@gmail.com",
-      records: {
-        id: "some_player_id",
-        wins: 10,
-        losses: 5,
-      },
-      members: {
-        id: "some_member_id",
-        name: "Member Name"
-      }
-    }
-  };
-  */
-
-  // Assuming you have these queries and mutations set up in your Apollo client
   const { loading, error, data } = useQuery(GET_LEAGUE_DETAILS, {
     variables: { leagueId },
   });
 
-  const [joinLeague, { data: joinData, loading: joinLoading, error: joinError }] = useMutation(JOIN_LEAGUE);
+  const [updateUserRecord, { loading: updatingRecord, error: updateError }] = useMutation(UPDATE_USER_RECORD);
 
   useEffect(() => {
     if (data) {
       setLeagueDetails(data.league);
+      setUserRecords(data.league.users); // Assuming 'users' contains user records
     } else if (error) {
       setIsError(true);
     }
   }, [data, error]);
 
-  const handleJoinLeague = async () => {
+  const handleUpdateUserRecord = async (userId, event) => {
+    event.preventDefault();
+    const formData = new FormData(event.currentTarget);
+    const wins = parseInt(formData.get('wins'), 10);
+    const losses = parseInt(formData.get('losses'), 10);
+    const points = parseInt(formData.get('points'), 10);
+
     try {
-      await joinLeague({ variables: { leagueId } });
-      // Refetch league details or update cache
+      await updateUserRecord({ variables: { userId, wins, losses, points } });
     } catch (error) {
-      console.error('Error joining league:', error);
+      console.error('Error updating user record:', error);
     }
   };
 
-  const isLoggedIn = AuthService.loggedIn();
   const isAdmin = AuthService.isAdmin();
 
   if (loading) return <div>Loading League Details...</div>;
@@ -66,31 +49,27 @@ const SingleLeague = () => {
       <h1 className="league-name">{leagueDetails?.name}</h1>
       <h2 className="league-game">{leagueDetails?.game}</h2>
       <div className="league-details">
-        {/* League details here */}
+        <p><strong>Organizer:</strong> {leagueDetails?.organizer.name}</p>
+        <p><strong>Contact:</strong> {leagueDetails?.organizer.contactDetails}</p>
+        <p><strong>Number of Players:</strong> {leagueDetails?.numberOfPlayers}</p>
       </div>
-
-      {isLoggedIn && !isAdmin && (
-        <button onClick={handleJoinLeague} disabled={joinLoading}>
-          {joinLoading ? 'Joining...' : 'Join League'}
-        </button>
-      )}
 
       {isAdmin && (
         <div>
-          <p>Admin Panel: View and Set User Stats</p>
-          {/* Admin-specific components or functionality */}
+          <h3>Admin Panel: Update User Records</h3>
+          {userRecords.map(user => (
+            <form onSubmit={(e) => handleUpdateUserRecord(user.id, e)} key={user.id}>
+              <p>{user.name}</p>
+              <input type="number" name="wins" placeholder="Wins" defaultValue={user.wins} />
+              <input type="number" name="losses" placeholder="Losses" defaultValue={user.losses} />
+              <input type="number" name="points" placeholder="Points" defaultValue={user.points} />
+              <button type="submit" disabled={updatingRecord}>Update Record</button>
+            </form>
+          ))}
         </div>
       )}
 
-      {!isAdmin && (
-        <div>
-          <p>User Stats: View Your Stats</p>
-          {/* User-specific components or functionality */}
-        </div>
-      )}
-
-      {joinError && <p className="error">Error joining league: {joinError.message}</p>}
-      {joinData && joinData.joinLeague.success && <p className="success">{joinData.joinLeague.message}</p>}
+      {updateError && <p className="error">Error updating record: {updateError.message}</p>}
     </div>
   );
 };
