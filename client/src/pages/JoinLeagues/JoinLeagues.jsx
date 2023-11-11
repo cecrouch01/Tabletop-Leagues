@@ -21,7 +21,6 @@ const JoinLeagues = () => {
                 }}
             />
             <button type='submit' className="search-btn"><AiOutlineSearch className="search-icon"/></button>
-            <p>{search}</p>
         </form>
         <div className="view-league">
             <div className="left-column">
