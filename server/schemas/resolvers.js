@@ -43,6 +43,7 @@ const resolvers = {
         }
         const token = signToken(user);  
 
+
         console.log(token);
 
         return { token, user};
