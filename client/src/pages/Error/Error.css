@@ -1,0 +1,15 @@
+.error-container {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    height: 100%;
+    background-color: black;
+}
+.error {
+    margin: 1.5em 0 3em 0;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: #ff914d;
+    font-size: 2em;
+    -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: #d84727;
+}
