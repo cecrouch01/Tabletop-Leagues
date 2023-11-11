@@ -11,9 +11,9 @@ const Home = () => {
 
     
     const { loading, data } = useQuery(QUERY_USERS);
+    const allUsers = data?.allUsers;
 
-    console.log(data)
-
+ 
     return (
         <div className="home-body">
             <button onClick={() => {
@@ -21,8 +21,14 @@ const Home = () => {
             }}>test</button>
             <div>
                 <h2 className="column-title">Skilled Users</h2>
-                {highScores.map((user, index) => {
-                    return <UserCard key={index} />
+                {loading ? <p>Loading</p> : allUsers.map((user, index) => {
+                    return <UserCard 
+                        key={index} 
+                        username={user.__typename}
+                        wins={user.wins}
+                        icon={user.icon}
+                        description={user.description}
+                    /> 
                 })}
             </div>
             <div>
