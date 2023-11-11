@@ -1,61 +1,45 @@
 import { useState } from 'react';
+import { useMutation } from '@apollo/client';
+
+import { useColosseumContext } from '../../utils/ColosseumContext';
 import './SignUp.css';
-import { validateEmail, checkPassword } from '../../utils/helpers';
+import Auth from '../../utils/auth';
+import { ADD_USER } from '../../utils/mutations';
 import IconSelector from '../../components/IconSelector/IconSelector';
 
+
 export default function SignUp() {
-    const [firstName, setFirstName] = useState('');
-    const [lastName, setLastName] = useState('');
-    const [username, setUsername] = useState('');
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [aboutMe, setAboutMe] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
+    const [addUserFormData, setAddUserFormData] = useState({ username: '', email: '', password: '', description: ''})
+    //State is being used to grab the icon from the Icon Selector Component
+    const [state, dispatch] = useColosseumContext();
+    const [addUser, {error}] = useMutation(ADD_USER)
 
     const handleInputChange = (e) => {
-        const { target } = e;
-        const inputType = target.name;
-        const inputValue = target.value;
-
-        if (inputType === 'firstName') {
-            setFirstName(inputValue);
-        } else if (inputType === 'lastName') {
-            setLastName(inputValue);
-        } else if (inputType === 'username') {
-            setUsername(inputValue);
-        } else if (inputType === 'email') {
-            setEmail(inputValue);
-        } else if (inputType === 'password') {
-            setPassword(inputValue);
-        } else {
-            setAboutMe(inputValue);
-        }
+        const { name, value } = e.target
+        setAddUserFormData({ ...addUserFormData, [name]: value })
     };
 
-    const handleFormSubmit = (e) => {
+    const handleFormSubmit = async (e) => {
         e.preventDefault();
-
-        if (!validateEmail(email)) {
-            setErrorMessage('Email is invalid');
-            return;
+        try{
+            const { data } = await addUser({
+                variables: { ...addUserFormData, icon: state.icon}
+            }) 
+            console.log(data);
+            if (error) {
+                throw new Error("sign up didn't work")
+            }
+            Auth.login(data.addUser.token)
+        } catch(err) {
+            console.log(err)
         }
-
-        if (!checkPassword(password)) {
-            setErrorMessage(
-                `Password must contain 8 characters including numbers and letters.`
-            );
-            return;
-        }
-
-        alert(`Welcome ${username}!`);
-
-        setFirstName('');
-        setLastName('');
-        setUsername('');
-        setEmail('');
-        setPassword('');
-        setAboutMe('');
-        setErrorMessage('');
+        setAddUserFormData({
+            username: '', 
+            email: '', 
+            password: '', 
+            description: ''
+        })
     }
 
     return (
@@ -64,23 +48,7 @@ export default function SignUp() {
             <form className="form" onSubmit={handleFormSubmit}>
                 <input
                     className='form-color'
-                    value={firstName}
-                    name="firstName"
-                    onChange={handleInputChange}
-                    type="text"
-                    placeholder="First Name"
-                />
-                <input
-                    className='form-color'
-                    value={lastName}
-                    name="lastName"
-                    onChange={handleInputChange}
-                    type="text"
-                    placeholder="Last Name"
-                />
-                <input
-                    className='form-color'
-                    value={username}
+                    value={addUserFormData.username}
                     name="username"
                     onChange={handleInputChange}
                     type="text"
@@ -88,7 +56,7 @@ export default function SignUp() {
                 />
                 <input
                     className='form-color'
-                    value={email}
+                    value={addUserFormData.email}
                     name="email"
                     onChange={handleInputChange}
                     type="email"
@@ -96,7 +64,7 @@ export default function SignUp() {
                 />
                 <input
                     className='form-color'
-                    value={password}
+                    value={addUserFormData.password}
                     name="password"
                     onChange={handleInputChange}
                     type="password"
@@ -105,15 +73,15 @@ export default function SignUp() {
                 <textarea
                     className='form-color'
                     id='aboutMeBody'
-                    value={aboutMe}
-                    name="aboutMe"
+                    value={addUserFormData.description}
+                    name="description"
                     onChange={handleInputChange}
-                    type="aboutMe"
+                    type="text"
                     placeholder="Tell us about yourself"
                 />
                 <IconSelector />
                 <div className='btn-container'>
-                    <button className="sign-up-button" type="signUp">Sign Up</button>
+                    <button className="sign-up-button" type="submit">Sign Up</button>
                 </div>
             </form>
             {errorMessage && (

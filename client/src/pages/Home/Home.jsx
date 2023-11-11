@@ -10,22 +10,8 @@ const Home = () => {
     const highScores = [1, 2, 3, 4, 5]
     const topLeagues = [1, 2, 3, 4, 5]
 
-    
-
-    // const { loading, data } = useQuery(QUERY_USERS);
-    const { loading, data } = useQuery(QUERY_ME);
-
-    const userData = data?.me || {};
-
-    // const userList = data?.user || {};
-
-    console.log(userData);
-    // console.log(userList);
-
     const { loading, data } = useQuery(QUERY_USERS);
-    const allUsers = data?.allUsers;
-
- 
+    const allUsers = data?.allUsers || {};
 
     return (
         <div className="home-body">
