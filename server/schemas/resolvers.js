@@ -4,23 +4,20 @@ const bcrypt = require('bcrypt');
 
 const resolvers = {
     Query: {
-      getMe: async (parent, arg, context) => {
+      getMe: async (parent, context) => {
         if (!context.user){
           throw new Error(AuthenticationError)
         }
-        return await User.findById(context.user._id);
+        return await User.findOne(context.user._id);
       },
-      getUser: async (parent, arg, user) => {
-        if (user){
-          throw new Error(AuthenticationError)
-        }
-        return await User.findById(user._id);
+      getUser: async (parent, user) => {
+        return await User.findOne(user._id);
       },
-      getLeague: async (parent, arg, context) => {
+      getLeague: async (parent, context) => {
         if (!context.user){
           throw new Error(AuthenticationError)
         }
-        return await League.findById(context.league._id);
+        return await League.findOne(context.league._id);
       },
 
     },
@@ -33,7 +30,7 @@ const resolvers = {
         if(!user) {
           throw new Error(AuthenticationError)
         }
-        const isPassword = await user.isCorrectPassword(password);
+        const isPassword = await user.bcryptCompare(password);
 
         if(!isPassword) {
           throw new Error(AuthenticationError)
@@ -58,13 +55,9 @@ const resolvers = {
             username,
             email,
             description,
+            password,
             icon,
           };
-  
-          if (password) {
-            const saltRounds = 10;
-            userUpdate.password = await bcrypt.hash(password, saltRounds);
-          }
   
           if (addToLeagues) {
 
@@ -96,7 +89,7 @@ const resolvers = {
         return {token, user};
       },
 
-      addLeague: async ( { name, description, admin, active, password }, context) => {
+      addLeague: async (parent, { name, description, admin, active, password }, context) => {
         try {
           let adminUser;
   
@@ -229,7 +222,7 @@ const resolvers = {
         }
       },
       //ADMIN responsibility
-      createGame: async (_, { users }) => {
+      createGame: async (parent, { users }) => {
         try {
           const usersData = await User.find({ _id: { $in: users } });
   
@@ -253,7 +246,7 @@ const resolvers = {
         }
       },
       
-      updatePoints: async ({game, _id}) => {
+      updatePoints: async (parent, {game, _id}) => {
       try {
         // Find the league by ID
         const league = await League.findOne({ league: _id});
