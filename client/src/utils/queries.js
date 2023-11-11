@@ -4,6 +4,7 @@ import {gql} from '@apollo/client'
 export const QUERY_USERS = gql`
     query getAllUsers {
         allUsers {
+        username
         description
         email
         icon

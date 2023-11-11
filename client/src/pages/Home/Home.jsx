@@ -11,6 +11,7 @@ const Home = () => {
     const topLeagues = [1, 2, 3, 4, 5]
 
     const { loading, data } = useQuery(QUERY_USERS);
+    console.log(data);
     const allUsers = data?.allUsers || {};
 
     return (
@@ -20,7 +21,7 @@ const Home = () => {
                 {loading ? <p>Loading</p> : allUsers.map((user, index) => {
                     return <UserCard 
                         key={index} 
-                        username={user.__typename}
+                        username={user.username}
                         wins={user.wins}
                         icon={user.icon}
                         description={user.description}
