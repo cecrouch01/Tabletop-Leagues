@@ -5,15 +5,19 @@ const { League } = require('../models');
 
 const isLeagueAdmin = rule()(async (parent, args, ctx, info) => {
     // console.log(args);
-    console.log(ctx);
+    // console.log(ctx);
+    console.log(ctx.user._id);
     if (args.leagueId) {
         const league = League.findById(args.leagueId);
-        return league.admins.contains(ctx.user._id);
+        console.log(args.leagueId);
+        console.log(league)
+        return league.admin.contains(ctx.user._id);
     }
 
     return false
     // return ctx?.user?.role === 'admin'
 })
+
 
 
 // your current schema definition...
