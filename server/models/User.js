@@ -32,7 +32,6 @@ const userSchema = new Schema ({
     },
     icon: {
       type: String,
-      required: true,
     },
     leagues: [
       leaguesSchema
@@ -45,24 +44,25 @@ const userSchema = new Schema ({
 });
 
 
+userSchema.methods.bcryptCompare = async function (inputPassword) {
+  console.log('Comparing input password:', inputPassword);
+  console.log('Stored hashed password:', this.password);
+  return await bcrypt.compare(inputPassword, this.password);
+};
+
 userSchema.pre('save', async function (next) {
-    if (this.isNew || this.isModified('password')) {
-      try{
+  try {
+    if (this.isModified('password') || this.isNew) {
       const saltRounds = 10;
       this.password = await bcrypt.hash(this.password, saltRounds);
-    } catch (error) {
-      console.error('Error hashing password:', error);
-      return next(error);
-  }
-}
-  
+      console.log('Hashed password before saving:', this.password);
+    }
     next();
-  });
-  
-  userSchema.methods.isCorrectPassword = async function (password) {
-    return bcrypt.compare(password, this.password);
-  };
-
+  } catch (error) {
+    console.error('Error hashing password:', error);
+    next(error);
+  }
+});
 
 const User = model('User', userSchema);
 
