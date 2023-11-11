@@ -67,7 +67,8 @@ type Auth {
 type Mutation {
     loginUser(email: String!, password: String!): Auth
 
-    addUser(username: String!, email: String!, password: String!, description: String, icon: String):User
+    addUser(username: String!, email: String!, password: String!, description: String, icon: String): Auth
+
     updateUser(id: ID!, wins: Int, username: String, email: String, password: String, description: String, icon: String, addToLeagues: [ID]):User
     removeUser(_id: ID!): User
     

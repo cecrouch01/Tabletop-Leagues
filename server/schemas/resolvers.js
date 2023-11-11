@@ -32,26 +32,34 @@ const resolvers = {
         if(!user) {
           throw new Error(AuthenticationError);
         }
-        // const isPassword = await user.isCorrectPassword(password);
 
-        // if(!isPassword) {
-        //   throw new Error(AuthenticationError);
-        // }
-        const token = signToken(user);
+        console.log('Input password:', password);
+         const isPassword = await user.bcryptCompare(password);
+        console.log('Hashed password from database:', user.password);
+        console.log('Password comparison result:', isPassword);
+
+        if(!isPassword) {
+          throw new Error(AuthenticationError);
+        }
+        const token = signToken(user);  
+
         console.log(token);
 
         return { token, user};
       },
-      addUser: async (parent, {username, email, password, description, icon}) => {
-        const user = await User.create({username, email, password, description, icon});
-
-        if (!user) {
-          throw new Error(AuthenticationError);
+      addUser: async (parent, { username, email, password, description, icon }) => {
+        try {
+          const user = await User.create({ username, email, password, description, icon, });
+          const token = signToken(user);
+      
+          
+          return { email: user.email, username: user.username, password: user.password, description: user.description, icon: user.icon, token };
+        } catch (error) {
+          console.error('Error creating user:', error);
+          throw new Error('Failed to create user');
         }
-        const token = signToken(user);
-
-        return {token, user};
       },
+
       updateUser: async (parent, { id, username, email, password, description, icon, addToLeagues, context}) => {
         try {
           const userUpdate = {
