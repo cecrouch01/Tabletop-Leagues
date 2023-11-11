@@ -1,9 +1,10 @@
 const { shield, rule, allow } = require('graphql-shield');
+const { League } = require('../models');
 
 
 
 const isLeagueAdmin = rule()(async (parent, args, ctx, info) => {
-    console.log(args);
+    // console.log(args);
     console.log(ctx);
     if (args.leagueId) {
         const league = League.findById(args.leagueId);
