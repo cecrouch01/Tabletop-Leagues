@@ -12,12 +12,12 @@ const QUERY_USERS = gql`
     }
 `; 
 //TODO Get Me
-const QUERY_ME = gql`
+// const QUERY_ME = gql`
 
-`;
+// `;
 //TODO Get all Leagues
 
 
 
 
-export { QUERY_USERS, QUERY_ME}
+export { QUERY_USERS }

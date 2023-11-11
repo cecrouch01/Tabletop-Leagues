@@ -3,7 +3,7 @@ import { useQuery } from "@apollo/client";
 
 import LeagueCard from "../../components/LeagueCard/LeagueCard";
 import UserCard from "../../components/UserCard/UserCard";
-import { QUERY_USERS, QUERY_ME } from "../../utils/queries";
+import { QUERY_USERS } from "../../utils/queries";
 import './Home.css';
 const Home = () => {
     const highScores = [1, 2, 3, 4, 5]
