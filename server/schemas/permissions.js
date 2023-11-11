@@ -1,9 +1,10 @@
-const { shield, rule } = require('graphql-shield');
+const { shield, rule, allow } = require('graphql-shield');
+const { League } = require('../models');
 
 
 
 const isLeagueAdmin = rule()(async (parent, args, ctx, info) => {
-    console.log(args);
+    // console.log(args);
     console.log(ctx);
     if (args.leagueId) {
         const league = League.findById(args.leagueId);
@@ -16,10 +17,21 @@ const isLeagueAdmin = rule()(async (parent, args, ctx, info) => {
 
 
 // your current schema definition...
-const permissions = shield({
-    Mutation: {
-        updateLeague: isLeagueAdmin
+const permissions = shield(
+    {
+        Query: {
+            getMe: allow
+        },
+        Mutation: {
+            loginUser: allow,
+            deactivateLeague: isLeagueAdmin
+        },
+    },
+    {
+        allowExternalErrors: true,
+        fallbackRule: allow,
+        debug: true,
     }
-})
+)
 
 module.exports = permissions;

@@ -1,13 +1,14 @@
 const { User, League } = require('../models');
 const { signToken, AuthenticationError } = require('../utils/auth');
+const bcrypt = require('bcrypt');
 
 const resolvers = {
     Query: {
-      getMe: async (parent, args, context) => {
-        if (context.user) {
-          return User.findOne({ _id: context.user._id });
+      getMe: async (parent, context) => {
+        if (!context.user){
+          throw new Error(AuthenticationError)
         }
-        throw AuthenticationError;
+        return await User.findOne(context.user._id);
       },
       getUser: async (parent, user) => {
         return await User.findOne(user._id);
@@ -30,36 +31,27 @@ const resolvers = {
         const user = await User.findOne({ email });
 
         if(!user) {
-          throw new Error(AuthenticationError);
+          throw new Error(AuthenticationError)
         }
-
-        console.log('Input password:', password);
-         const isPassword = await user.bcryptCompare(password);
-        console.log('Hashed password from database:', user.password);
-        console.log('Password comparison result:', isPassword);
+        const isPassword = await user.bcryptCompare(password);
 
         if(!isPassword) {
-          throw new Error(AuthenticationError);
+          throw new Error(AuthenticationError)
         }
-        const token = signToken(user);  
-
-        console.log(token);
+        const token = signToken(user);
 
         return { token, user};
       },
-      addUser: async (parent, { username, email, password, description, icon }) => {
-        try {
-          const user = await User.create({ username, email, password, description, icon, });
-          const token = signToken(user);
-      
-          
-          return { email: user.email, username: user.username, password: user.password, description: user.description, icon: user.icon, token };
-        } catch (error) {
-          console.error('Error creating user:', error);
-          throw new Error('Failed to create user');
-        }
-      },
+      addUser: async (parent, {username, email, password, description, icon}) => {
+        const user = await User.create({username, email, password, description, icon});
 
+        if (!user) {
+          throw new Error(AuthenticationError);
+        }
+        const token = signToken(user);
+
+        return {token, user};
+      },
       updateUser: async (parent, { id, username, email, password, description, icon, addToLeagues, context}) => {
         try {
           const userUpdate = {
@@ -102,10 +94,10 @@ const resolvers = {
 
       addLeague: async (parent, { name, description, admin, active, password }, context) => {
         try {
-          let adminUser;
+          let adminUser = { admin };
   
           if (context.user && context.user._id) {
-            adminUser = await User.findById(context.user._id);
+            adminUser = await User.findOne(context.user._id);
           }
   
           const leagueData = {
@@ -113,13 +105,13 @@ const resolvers = {
             description,
             active,
             password,
-            admin: adminUser,
+            admin,
           };
   
           const league = await League.create(leagueData);
   
           if (!league) {
-            throw new AuthenticationError('Failed to create league');
+            throw new Error(AuthenticationError('Failed to create league'));
           }
   
           const user = adminUser;
@@ -206,13 +198,14 @@ const resolvers = {
         }
       },
       //ADMIN responbility
-      deactivateLeague: async (parent, { active } ) => {
+      deactivateLeague: async (parent, { leagueId, active } ) => {
+        
         try {
           if (!active) {
             throw new AuthenticationError('No valid parameters provided');
           }
   
-          const leagueActive = await League.findById(active);
+          const leagueActive = await League.findOne({ id: leagueId });
   
           if (!leagueActive) {
             throw new AuthenticationError('Active League not found.');
