@@ -296,8 +296,7 @@ const resolvers = {
         throw new Error(`Error updating points: ${error.message}`);
       }
     }, 
-    },
-      
+    },  
   };
   
   module.exports = resolvers;
