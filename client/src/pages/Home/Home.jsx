@@ -10,25 +10,14 @@ const Home = () => {
     const highScores = [1, 2, 3, 4, 5]
     const topLeagues = [1, 2, 3, 4, 5]
 
-    
-
-    // const { loading, data } = useQuery(QUERY_USERS);
-    const { loading, data } = useQuery(QUERY_ME);
-
-    const userData = data?.me || {};
-
-    // const userList = data?.user || {};
-
-    console.log(userData);
-    // console.log(userList);
-
- 
+    const { loading, data } = useQuery(QUERY_USERS);
+    const allUsers = data?.allUsers || {};
 
     return (
         <div className="home-body">
             <div>
                 <h2 className="column-title">Skilled Users</h2>
-                {/* {loading ? <p>Loading</p> : allUsers.map((user, index) => {
+                {loading ? <p>Loading</p> : allUsers.map((user, index) => {
                     return <UserCard 
                         key={index} 
                         username={user.__typename}
@@ -36,7 +25,7 @@ const Home = () => {
                         icon={user.icon}
                         description={user.description}
                     /> 
-                })} */}
+                })}
             </div>
             <div>
                 <h2 className="column-title">Top Leagues</h2>
