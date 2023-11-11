@@ -1,8 +1,10 @@
+import './Error.css'
+
 const Error = () => {
     return (
-    <>
-        <h2>Error page</h2>
-    </>
+        <section className='error-container'>
+            <h2 className="error">Ooops... something went wrong!</h2>
+        </section>
     )
 }
 
