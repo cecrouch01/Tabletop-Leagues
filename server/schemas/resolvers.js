@@ -13,6 +13,9 @@ const resolvers = {
       getUser: async (parent, user) => {
         return await User.findOne(user._id);
       },
+      allUsers: async () => {
+        return await User.find();
+      },
       getLeague: async (parent, context) => {
         if (!context.user){
           throw new Error(AuthenticationError)

@@ -1,6 +1,6 @@
 const { shield, rule } = require('graphql-shield');
 
-
+.
 
 const isLeagueAdmin = rule()(async (parent, args, ctx, info) => {
     console.log(args);

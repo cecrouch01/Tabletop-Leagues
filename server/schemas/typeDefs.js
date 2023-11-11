@@ -55,6 +55,7 @@ input AddMemberInput {
         getMe: User!
         getUser: User!
         getLeague: League!
+        allUsers: [User]!
 
 }             
     
