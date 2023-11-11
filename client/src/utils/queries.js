@@ -1,8 +1,8 @@
 import {gql} from '@apollo/client'
 
 //TODO Get all users
-const QUERY_USERS = gql`
-    query GetAllUsers {
+export const QUERY_USERS = gql`
+    query getAllUsers {
         allUsers {
         description
         email
@@ -12,12 +12,16 @@ const QUERY_USERS = gql`
     }
 `; 
 //TODO Get Me
-// const QUERY_ME = gql`
-
-// `;
+export const QUERY_ME = gql`
+    query getMe {
+        me {
+            _id
+            username
+            wins
+            description
+            icon
+            leagues
+        }
+    }
+`;
 //TODO Get all Leagues
-
-
-
-
-export { QUERY_USERS }

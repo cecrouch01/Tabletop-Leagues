@@ -1,6 +1,7 @@
 const express = require('express');
 const { ApolloServer } = require('@apollo/server');
 const { expressMiddleware } = require('@apollo/server/express4');
+const path = require('path');
 const { authMiddleware } = require('./utils/auth');
 const { typeDefs, resolvers, permissions } = require('./schemas');
 const db = require('./config/connection');
@@ -12,12 +13,13 @@ const schema = applyMiddleware(makeExecutableSchema({
     resolvers
 }), permissions);
 
+const app = express();
+
 const PORT = process.env.PORT || 3001;
 const server = new ApolloServer({
-    schema
+    schema,
+    context: authMiddleware
 });
-
-const app = express();
 
 const grady = () => {
     return {
@@ -37,8 +39,16 @@ const startApolloSever = async () => {
     app.use(express.json());
 
     app.use('/graphql', expressMiddleware(server, {
-        context: grady
+        context: authMiddleware
     }));
+
+    if (process.env.NODE_ENV === 'production') {
+        app.use(express.static(path.join(__dirname, '../client/dist')));
+    
+        app.get('*', (req, res) => {
+          res.sendFile(path.join(__dirname, '../client/dist/index.html'));
+        });
+    }
 
     db.once('open', () => {
         app.listen(PORT, () => {

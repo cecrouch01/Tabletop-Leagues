@@ -1,14 +1,13 @@
 const { User, League } = require('../models');
 const { signToken, AuthenticationError } = require('../utils/auth');
-const bcrypt = require('bcrypt');
 
 const resolvers = {
     Query: {
-      getMe: async (parent, context) => {
-        if (!context.user){
-          throw new Error(AuthenticationError)
+      getMe: async (parent, args, context) => {
+        if (context.user) {
+          return User.findOne({ _id: context.user._id });
         }
-        return await User.findOne(context.user._id);
+        throw AuthenticationError;
       },
       getUser: async (parent, user) => {
         return await User.findOne(user._id);
@@ -31,14 +30,15 @@ const resolvers = {
         const user = await User.findOne({ email });
 
         if(!user) {
-          throw new Error(AuthenticationError)
+          throw new Error(AuthenticationError);
         }
-        const isPassword = await user.bcryptCompare(password);
+        // const isPassword = await user.isCorrectPassword(password);
 
-        if(!isPassword) {
-          throw new Error(AuthenticationError)
-        }
+        // if(!isPassword) {
+        //   throw new Error(AuthenticationError);
+        // }
         const token = signToken(user);
+        console.log(token);
 
         return { token, user};
       },
