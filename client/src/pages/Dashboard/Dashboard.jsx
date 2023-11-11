@@ -5,6 +5,7 @@ import './Dashboard.css'
 const Dashboard = () => {
     const recordArr = [1, 2, 3];
     const activeLeague = [1, 2, 3];
+    
     return (
         <div className='dshbrd-container'>
             <div className='dshbrd-user-card'>
