@@ -36,6 +36,7 @@ export default function Login() {
             email: '',
             password: '',
         });
+        alert(`User logged in!`);
 
     };
 

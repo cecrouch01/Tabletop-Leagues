@@ -69,7 +69,7 @@ class AuthService {
   login(idToken) {
     //TODO: find a way to avoid using window.location.reload
     localStorage.setItem('id_token', idToken);
-    // window.location.assign('/');
+    window.location.assign('/dashboard');
   }
 
   logout() {
