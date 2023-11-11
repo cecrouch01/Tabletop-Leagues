@@ -172,6 +172,7 @@ const resolvers = {
           throw new AuthenticationError('An error occurred');
         } 
       },
+      //ADMIN responsibilty
       addMember: async (parent, context, {members}) => {
         try {
           if (!context.user || !context.user._id) {
@@ -200,7 +201,7 @@ const resolvers = {
           throw new AuthenticationError('An error occurred');
         }
       },
-
+      //ADMIN responbility
       deactivateLeague: async (parent, { active } ) => {
         try {
           if (!active) {
@@ -227,9 +228,76 @@ const resolvers = {
           throw new AuthenticationError('An error occurred');
         }
       },
-
-    },
+      //ADMIN responsibility
+      createGame: async (_, { users }) => {
+        try {
+          const usersData = await User.find({ _id: { $in: users } });
+  
+          if (usersData.length !== users.length) {
+            throw new Error('Invalid user ID(s) provided');
+          }
+  
+          const newGame = new Game({
+            game: usersData.map((user, index) => ({
+              user: user._id,
+              place: index +1
+            })),
+          });
+  
+          // Save the new game to the database
+          const savedGame = await newGame.save();
+  
+          return savedGame;
+        } catch (error) {
+          throw new Error(`Error creating game: ${error.message}`);
+        }
+      },
+      
+      updatePoints: async ({game, _id}) => {
+      try {
+        // Find the league by ID
+        const league = await League.findOne({ league: _id});
     
+        if (!league) {
+          throw new Error('League not found');
+        }
+    
+        const games = await League.game.find({ game });
+    
+        for (const game of games) {
+          const pointsMap = {
+            1: 4,
+            2: 3,
+            3: 2,
+            4: 1,
+          };
+    
+          for (const member of game.members) {
+            const pointsToAdd = pointsMap[member.place];
+    
+            const memberData = await League.member.findOne({ user: member.user, league: _id});
+    
+            if (memberData) {
+              memberData.points = (memberData.points || 0) + pointsToAdd;
+              await memberData.save();
+            } else {
+              const newMember = new League.member({
+                user: member.user,
+                points: pointsToAdd,
+                league: league._id,
+              });
+              await newMember.save();
+            }
+          }
+        }
+    
+        return 'Points updated successfully';
+      } catch (error) {
+        throw new Error(`Error updating points: ${error.message}`);
+      }
+    }, 
+    },
+      
   };
   
   module.exports = resolvers;
