@@ -47,9 +47,14 @@ const userSchema = new Schema ({
 
 userSchema.pre('save', async function (next) {
     if (this.isNew || this.isModified('password')) {
+      try{
       const saltRounds = 10;
       this.password = await bcrypt.hash(this.password, saltRounds);
-    }
+    } catch (error) {
+      console.error('Error hashing password:', error);
+      return next(error);
+  }
+}
   
     next();
   });

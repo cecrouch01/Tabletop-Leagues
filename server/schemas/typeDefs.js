@@ -45,10 +45,17 @@ input MembersInput {
           league: ID!
         }
 
+        
+input AddMemberInput {
+            league: ID!
+          }
+
 
     type Query {
+        getMe: User!
         getUser: User!
         getLeague: League!
+
 }             
     
     type Mutation {
@@ -58,6 +65,10 @@ input MembersInput {
         removeUser(_id: ID!):User
         addLeague( name: String! description: String! admin: ID active: Boolean! password: String!): League
         updateLeague(active: Boolean members: MembersInput): League
+        addMember(members: AddMemberInput!): League
+        deactivateLeague(active: ID!): League
+        createGame(users: [ID!]!): League
+        updatePoints(leagueId: ID!): League
         }
         
 `;
