@@ -44,7 +44,6 @@ const userSchema = new Schema ({
 });
 
 
-
 userSchema.methods.bcryptCompare = async function (inputPassword) {
   console.log('Comparing input password:', inputPassword);
   console.log('Stored hashed password:', this.password);
