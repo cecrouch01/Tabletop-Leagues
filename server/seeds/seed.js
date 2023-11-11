@@ -3,6 +3,7 @@ const userSeeds = require('./userSeeds.json')
 const leagueSeeds = require('./leagueSeeds.json')
 const userLeagueSeeds = require('./userLeagueSeeds.json')
 const db = require('../config/connection');
+const bcrypt = require('bcrypt');
 
 async function getUserIdByUsername(username) {
   const user = await User.findOne({ username });
@@ -23,7 +24,6 @@ async function getUserId(leaguesData) {
     const updatedGames = await Promise.all(
       league.games.map(async (gameObject) => {
         const game = gameObject.game || [];
-        console.log(game);
     
         const updatedPlayers = await Promise.all(
           game.map(async (player) => {
@@ -32,7 +32,6 @@ async function getUserId(leaguesData) {
           })
         );
     
-        console.log(updatedPlayers);
         return { game: updatedPlayers };
       })
     );
@@ -92,6 +91,22 @@ async function getLeagueId(userLeagueSeeds) {
   }
 }
 
+async function rehashPasswords() {
+  try {
+    const users = await User.find();
+
+    for (const user of users) {
+      const newPasswordHash = await bcrypt.hash(user.password, 10);
+
+      await User.findByIdAndUpdate(user._id, { password: newPasswordHash });
+    }
+
+    console.log('Passwords rehashed successfully.');
+  } catch (error) {
+    console.error('Error rehashing passwords:', error);
+  }
+}
+
 
 db.once('open', async () => {
   try {
@@ -99,6 +114,7 @@ db.once('open', async () => {
     await League.deleteMany({});
     await User.insertMany(userSeeds);
     console.log('Users seeded successfully.');
+    await rehashPasswords();
 
     const updatedLeaguesData = await getUserId(leagueSeeds);
     await League.insertMany(updatedLeaguesData);
@@ -108,5 +124,7 @@ db.once('open', async () => {
     console.log('User leagues updated successfully.');
   } catch (error) {
     console.error('Error seeding data:', error);
-  } 
+  } finally {
+    db.close()
+  }
 });
