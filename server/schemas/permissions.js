@@ -6,12 +6,14 @@ const { League } = require('../models');
 const isLeagueAdmin = rule()(async (parent, args, ctx, info) => {
     // console.log(args);
     // console.log(ctx);
-    console.log(ctx.user._id);
+    // console.log(ctx.user._id);
     if (args.leagueId) {
-        const league = League.findById(args.leagueId);
-        console.log(args.leagueId);
-        console.log(league)
-        return league.admin.contains(ctx.user._id);
+        const league = await League.findById(args.leagueId);
+        // console.log(args.leagueId);
+        console.log(league.admin)
+        console.log(league.admin == ctx.user._id)
+        // return league.admin.contains(ctx.user._id);
+        return league.admin == ctx.user._id;
     }
 
     return false
