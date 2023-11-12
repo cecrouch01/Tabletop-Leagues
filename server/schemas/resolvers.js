@@ -16,11 +16,11 @@ const resolvers = {
       allUsers: async () => {
         return await User.find();
       },
-      getLeagues: async (parent, context) => {
-        if (!context.user){
-          throw new Error(AuthenticationError)
-        }
-        return await League.find(context.league._id);
+      allLeagues: async () => {
+        return await League.find();
+      },
+      getLeague: async (parent, league) => {
+        return await League.findOne(league._id);
       },
 
     },

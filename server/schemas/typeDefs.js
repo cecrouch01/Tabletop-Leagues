@@ -54,9 +54,9 @@ input AddMemberInput {
 type Query {
     getMe: User!
     getUser: User!
-    getLeagues: [League]!
     allUsers: [User]!
-
+    allLeagues: [League]!
+    getLeague(leagueId: ID!): League
 }
 
 type Auth {
