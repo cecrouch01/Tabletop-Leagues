@@ -28,6 +28,7 @@ export default function Login() {
                 throw new Error('User not logged in')
             }
             Auth.login(data.loginUser.token);
+            alert(`User logged in!`);
           } catch (err) {
             console.error(err);
         }
