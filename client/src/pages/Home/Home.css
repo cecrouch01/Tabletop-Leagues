@@ -2,4 +2,20 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
+    background-color: black;
+}
+
+.column-title {
+  text-align: center;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: #ff914d;
+    font-size: 2em;
+    -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: #d84727;
+}
+
+@media screen and (max-width: 800px){
+  .column-title {
+    text-align: left;
+  }
 }

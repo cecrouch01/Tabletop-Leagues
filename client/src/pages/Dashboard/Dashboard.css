@@ -1,3 +1,6 @@
+.dshbrd-container {
+    background-color: black;
+}
 .dshbrd-user-card {
     display: flex;
     justify-content: center;

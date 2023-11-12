@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { checkPassword } from '../../utils/helpers';
 import { useColosseumContext } from '../../utils/ColosseumContext';
-import { TEST } from '../../utils/actions';
+
 
 import './CreateLeague.css';
 
@@ -15,7 +15,6 @@ const CreateLeague = () => {
 
     const createLeague = (e) => {
         e.preventDefault();
-
         if (leagueName === '') {
             setNameErrorMessage('Please input a league name');
             return;

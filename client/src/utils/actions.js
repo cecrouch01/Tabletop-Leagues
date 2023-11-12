@@ -1,4 +1,4 @@
-const TEST = 'TEST';
+const CHOOSE_ICON = 'CHOOSE_ICON';
 
 
-export {TEST}
+export {CHOOSE_ICON}

@@ -1,9 +1,9 @@
 const typeDefs = `
 type User {
     _id: ID!
-    username: String!
-    email: String!
-    password: String!
+    username: String
+    email: String
+    password: String
     wins: Int
     description: String
     icon: String
@@ -11,15 +11,14 @@ type User {
 }
 
 type League {
-    _id: ID!
-    name: String!
-    description: String!
-    admin: User!
-    members: [Member]!
+    _id: ID
+    name: String
+    description: String
+    admin: User
+    members: [Member]
     games: [Game]
-    active: Boolean!
-    winner: User
-    password: String!
+    active: Boolean
+    password: String
 }
 
 type Game {
@@ -42,19 +41,45 @@ input userInput {
     description: String
     icon: String
 }
-
-    type Query {
-        getUser: User!
-        getLeague: League!
+input MembersInput {
+    league: ID!
 }
 
-    type Mutation {
-        loginUser(email: String!, password: String!):User
-        addUser(username: String!, email: String!, password: String!, description: String, icon: String):User
-        updateUser(id: ID!, wins: Int, username: String, email: String, password: String, description: String, icon: String, addToLeagues: [ID]):User
-        removeUser(_id: ID!):User
-
+        
+input AddMemberInput {
+    league: ID!
 }
+
+
+type Query {
+    getMe: User!
+    getUser: User!
+    allUsers: [User]!
+    allLeagues: [League]!
+    getLeague(_id: ID!): League
+}
+
+type Auth {
+    token: ID!
+    user: User
+}
+    
+type Mutation {
+    loginUser(email: String!, password: String!): Auth
+
+    addUser(username: String!, email: String!, password: String!, description: String, icon: String): Auth
+
+    updateUser(id: ID!, wins: Int, username: String, email: String, password: String, description: String, icon: String, addToLeagues: [ID]):User
+    removeUser(_id: ID!): User
+    
+    addLeague( name: String! description: String! admin: ID active: Boolean! password: String!): League
+     updateLeague(active: Boolean members: MembersInput): League
+    addMember(members: AddMemberInput!): League
+    deactivateLeague(leagueId: ID!, active: Boolean!): League
+    createGame(users: [ID!]!): League
+    updatePoints(leagueId: ID!): League
+}
+        
 `;
 
 module.exports = typeDefs;

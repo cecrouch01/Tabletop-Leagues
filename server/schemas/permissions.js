@@ -1,23 +1,43 @@
-const { shield, rule } = require('graphql-shield');
-const { makeExecutableSchema } = require('@graphql-tools/schema');
+const { shield, rule, allow } = require('graphql-shield');
+const { League } = require('../models');
 
-const { applyMiddleware } = require('graphql-middleware');
+
 
 const isLeagueAdmin = rule()(async (parent, args, ctx, info) => {
-    console.log(args);
-    console.log(ctx);
- return ctx?.user?.role === 'admin'
+    // console.log(args);
+    // console.log(ctx);
+    // console.log(ctx.user._id);
+    if (args.leagueId) {
+        const league = await League.findById(args.leagueId);
+        // console.log(args.leagueId);
+        console.log(league.admin)
+        console.log(league.admin == ctx.user._id)
+        // return league.admin.contains(ctx.user._id);
+        return league.admin == ctx.user._id;
+    }
+
+    return false
+    // return ctx?.user?.role === 'admin'
 })
+
 
 
 // your current schema definition...
-const permissions = shield({
-    Mutation: {
-        updateLeague: isLeagueAdmin
+const permissions = shield(
+    {
+        Query: {
+            getMe: allow
+        },
+        Mutation: {
+            loginUser: allow,
+            deactivateLeague: isLeagueAdmin
+        },
+    },
+    {
+        allowExternalErrors: true,
+        fallbackRule: allow,
+        debug: true,
     }
-})
+)
 
-const schema = applyMiddleware(makeExecutableSchema({ 
-    typeDefs,
-    resolvers
-}), permissions)
+module.exports = permissions;
