@@ -1,19 +1,19 @@
 import Card from '../Card/Card'
 
 import './LeagueCard.css'
-const LeagueCard = ({children}) => {
+const LeagueCard = ({children, description, name, creator, totalPlayers}) => {
     return (
     <Card>
         <div className='league-card-contents'>
             <div className='league-contents'>
                 <div>
-                    <h3 className='league-name'>League Name</h3>
+                    <h3 className='league-name'>{name}</h3>
                     <p className='league-description'>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    {description}
                     </p>
                     <ul className='league-list'>
-                        <li >Creator: John Smith</li>
-                        <li >Size: X players </li>
+                        <li >Creator: {creator ? creator : 'unknown'}</li>
+                        <li >Size: {totalPlayers ? totalPlayers : 0} players </li>
                     </ul>
                 </div>
                 {children}
