@@ -19,8 +19,8 @@ const resolvers = {
       allLeagues: async () => {
         return await League.find();
       },
-      getLeague: async (parent, league) => {
-        return await League.findOne(league._id);
+      getLeague: async (parent, _id) => {
+        return await League.findById(_id);
       },
 
     },
@@ -97,19 +97,23 @@ const resolvers = {
           let adminUser = { admin };
   
           if (context.user && context.user._id) {
-            adminUser = await User.findOne(context.user._id);
+            adminUser = await User.findById(context.user._id);
+            console.log(adminUser);
           }
+
   
           const leagueData = {
             name,
             description,
             active,
             password,
-            admin,
+            admin: adminUser,
           };
+
+          console.log(leagueData);
   
           const league = await League.create(leagueData);
-  
+          console.log(league);
           if (!league) {
             throw new Error(AuthenticationError('Failed to create league'));
           }
@@ -205,10 +209,10 @@ const resolvers = {
             throw new AuthenticationError('No valid parameters provided');
           }
   
-          const leagueActive = await League.findOne({ id: leagueId });
-  
+          const leagueActive = await League.findById(leagueId);
+          console.log(leagueActive);
           if (!leagueActive) {
-            throw new AuthenticationError('Active League not found.');
+            throw new Error(AuthenticationError('Active League not found.'));
           }
   
           leagueActive.active = !leagueActive.active;
@@ -222,7 +226,7 @@ const resolvers = {
           };
         } catch (error) {
           console.error(error);
-          throw new AuthenticationError('An error occurred');
+          // throw new Error(AuthenticationError('An error occurred'));
         }
       },
       //ADMIN responsibility
