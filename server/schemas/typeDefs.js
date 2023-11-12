@@ -11,14 +11,14 @@ type User {
 }
 
 type League {
-    _id: ID!
-    name: String!
-    description: String!
-    admin: User!
-    members: [Member]!
+    _id: ID
+    name: String
+    description: String
+    admin: User
+    members: [Member]
     games: [Game]
-    active: Boolean!
-    password: String!
+    active: Boolean
+    password: String
 }
 
 type Game {

@@ -218,12 +218,9 @@ const resolvers = {
           leagueActive.active = !leagueActive.active;
   
           const updatedActive = await leagueActive.save();
+          console.log(updatedActive);
   
-          return {
-            success: true,
-            message: 'League successfully activated/deactivated',
-            object: updatedActive,
-          };
+          return updatedActive;
         } catch (error) {
           console.error(error);
           // throw new Error(AuthenticationError('An error occurred'));

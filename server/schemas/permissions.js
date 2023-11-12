@@ -10,8 +10,8 @@ const isLeagueAdmin = rule()(async (parent, args, ctx, info) => {
     if (args.leagueId) {
         const league = await League.findById(args.leagueId);
         // console.log(args.leagueId);
-        // console.log(league.admin)
-        // console.log(league.admin == ctx.user._id)
+        console.log(league.admin)
+        console.log(league.admin == ctx.user._id)
         // return league.admin.contains(ctx.user._id);
         return league.admin == ctx.user._id;
     }
