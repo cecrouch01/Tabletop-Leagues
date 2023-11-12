@@ -3,7 +3,7 @@ import { GiAlienSkull, GiAngelWings, GiAries, GiBattleAxe, GiBull } from 'react-
 import placeholder from '../../assets/75x75-placeholder.png'
 import Card from '../Card/Card';
 import './UserCard.css';
-const UserCard = ({username, wins, icon, description}) => {
+const UserCard = ({ username, wins, icon, description }) => {
     const iconFuction = (icon) => {
         switch (icon) {
             case 'alien':
@@ -12,7 +12,7 @@ const UserCard = ({username, wins, icon, description}) => {
                 return <GiAngelWings className='user-icon' />
             case 'aries':
                 return <GiAries className='user-icon' />
-            case 'battle-axe':
+            case 'axe':
                 return <GiBattleAxe className='user-icon' />
             case 'bull':
                 return <GiBull className='user-icon' />

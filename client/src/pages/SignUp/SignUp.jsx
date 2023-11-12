@@ -10,10 +10,10 @@ import IconSelector from '../../components/IconSelector/IconSelector';
 
 export default function SignUp() {
     const [errorMessage, setErrorMessage] = useState('');
-    const [addUserFormData, setAddUserFormData] = useState({ username: '', email: '', password: '', description: ''})
+    const [addUserFormData, setAddUserFormData] = useState({ username: '', email: '', password: '', description: '' })
     //State is being used to grab the icon from the Icon Selector Component
     const [state, dispatch] = useColosseumContext();
-    const [addUser, {error}] = useMutation(ADD_USER)
+    const [addUser, { error }] = useMutation(ADD_USER)
 
     const handleInputChange = (e) => {
         const { name, value } = e.target
@@ -22,22 +22,23 @@ export default function SignUp() {
 
     const handleFormSubmit = async (e) => {
         e.preventDefault();
-        try{
+        try {
             const { data } = await addUser({
-                variables: { ...addUserFormData, icon: state.icon}
-            }) 
+                variables: { ...addUserFormData, icon: state.icon }
+            })
             console.log(data);
             if (error) {
                 throw new Error("sign up didn't work")
             }
-            Auth.login(data.addUser.token)
-        } catch(err) {
+            Auth.login(data.addUser.token);
+            alert(`Welcome to Colosseum!`);
+        } catch (err) {
             console.log(err)
         }
         setAddUserFormData({
-            username: '', 
-            email: '', 
-            password: '', 
+            username: '',
+            email: '',
+            password: '',
             description: ''
         })
     }
