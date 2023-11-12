@@ -142,7 +142,7 @@ const resolvers = {
             };
   
             const updatedLeague = await League.findOneAndUpdate(
-              { _id: members.league._id },
+              { _id: League._id },
               { $push: { members: newMember } },
               { new: true }
             );
