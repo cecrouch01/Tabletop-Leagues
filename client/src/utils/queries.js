@@ -39,6 +39,29 @@ export const QUERY_ME = gql`
         }
     }
 `;
+export const QUERY_HOMEPAGE = gql`
+query HompageQuery {
+    allUsers {
+      username
+      description
+      icon
+      wins
+    }
+    allLeagues {
+      active
+      admin {
+        username
+      }
+      description
+      name
+      members {
+        user {
+          username
+        }
+      }
+    }
+  }
+`;
 // Get all Leagues
 export const QUERY_LEAGUES = gql`
     query allLeagues {
@@ -53,7 +76,7 @@ export const QUERY_LEAGUES = gql`
     }
 `;
 //Get specific League
-export const QUERY_LEAGUE = gql`
+export const QUERY_SINGLE_LEAGUE = gql`
     query getLeague {
         league {
             name
