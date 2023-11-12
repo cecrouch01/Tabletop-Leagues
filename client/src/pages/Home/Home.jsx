@@ -11,7 +11,6 @@ const Home = () => {
     const topLeagues = [1, 2, 3, 4, 5]
 
     const { loading, data } = useQuery(QUERY_USERS);
-    console.log(data);
     const allUsers = data?.allUsers || {};
 
     return (
