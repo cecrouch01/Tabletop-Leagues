@@ -1,6 +1,6 @@
 import {gql} from '@apollo/client'
 
-//TODO Get all users
+//Get all users
 export const QUERY_USERS = gql`
     query getAllUsers {
         allUsers {
@@ -12,7 +12,7 @@ export const QUERY_USERS = gql`
         }
     }
 `; 
-//TODO Get Me
+//Get Me
 export const QUERY_ME = gql`
     query getMe {
         me {
@@ -25,4 +25,29 @@ export const QUERY_ME = gql`
         }
     }
 `;
-//TODO Get all Leagues
+// Get all Leagues
+export const QUERY_LEAGUES = gql`
+    query allLeagues {
+        allLeagues {
+            name
+            description
+            admin
+            members
+            games
+            active
+        }
+    }
+`;
+//Get specific League
+export const QUERY_LEAGUE = gql`
+    query getLeague {
+        league {
+            name
+            description
+            admin
+            members
+            games
+            active
+        }
+    }
+`;
