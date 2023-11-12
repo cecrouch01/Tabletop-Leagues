@@ -14,14 +14,28 @@ export const QUERY_USERS = gql`
 `; 
 //Get Me
 export const QUERY_ME = gql`
-    query getMe {
-        me {
-            _id
-            username
-            wins
+    query GetMe {
+        getMe {
+        description
+        icon
+        username
+        wins
+        leagues {
+            active
             description
-            icon
-            leagues
+            name
+            admin {
+            username
+            }
+            games {
+            game {
+                place
+                player {
+                username
+                }
+            }
+            }
+        }
         }
     }
 `;
