@@ -4,40 +4,43 @@ import {gql} from '@apollo/client'
 export const QUERY_USERS = gql`
     query getAllUsers {
         allUsers {
-        username
-        description
-        email
-        icon
-        wins
+            _id
+            email
+            username
+            password
+            icon
+            description
+            wins
+            leagueCount
+          }
         }
-    }
 `; 
 //Get Me
 export const QUERY_ME = gql`
-    query GetMe {
-        getMe {
-        description
-        icon
+query GetMe {
+    getMe {
+      _id
+        email
         username
+        password
+        icon
+        description
         wins
+        leagueCount
         leagues {
-            active
-            description
-            name
-            admin {
-            username
-            }
-            games {
-            game {
-                place
-                player {
-                username
-                }
-            }
-            }
+          league {
+            _id
+          }
         }
+        activeLeagues {
+          _id
         }
+        inactiveLeagues {
+          _id
+        }
+      }
     }
+  }
 `;
 export const QUERY_HOMEPAGE = gql`
 query HompageQuery {
@@ -64,50 +67,91 @@ query HompageQuery {
 `;
 // Get all Leagues
 export const QUERY_LEAGUES = gql`
-    query AllLeagues {
-        allLeagues {
-        active
-        description
-        name
-        admin {
-            username
-        }
-        members {
-            user {
-            username
-            }
-        }
-        }
+query AllLeagues {
+    allLeagues {
+      _id
+      active
+      name
+      description
+      password
+      memberCount
+      gameCount
+      admin {
+        _id
+      }
+      winner {
+        _id
+      }
     }
+      }
+    }
+  }
 `;
 //Get specific League
 export const QUERY_SINGLE_LEAGUE = gql`
-    query getLeague {
-        league {
-            name
-            description
-            admin
-            members
-            games
-            active
+query GetLeague($id: ID!) {
+    getLeague(_id: $id) {
+      _id
+      active
+      name
+      description
+      password
+      admin {
+        _id
+      }
+      winner {
+        _id
+      }
+      memberCount
+      gameCount
+      members {
+        points
+        user {
+          _id
         }
+      }
+      games {
+        game {
+          place
+          user {
+            _id
+          }
+        }
+      }
     }
+  }
 `;
 
 export const QUERY_LEAGUE_BY_NAME = gql`
-    query LeaguesByName($name: String!) {
-        getLeagueByName(name: $name) {
-        active
-        description
-        name
-        admin {
-            username
+query GetLeagueByName($name: String!) {
+    getLeagueByName(name: $name) {
+      _id
+      active
+      name
+      description
+      password
+      admin {
+        _id
+      }
+      winner {
+        _id
+      }
+      memberCount
+      gameCount
+      members {
+        points
+        user {
+          _id
         }
-        members {
-            user {
-            username
-            }
+      }
+      games {
+        game {
+          place
+          user {
+            _id
+          }
         }
-        }
+      }
     }
+  }
 `;
