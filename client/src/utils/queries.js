@@ -38,7 +38,6 @@ query GetMe {
         inactiveLeagues {
           _id
         }
-      }
     }
   }
 `;
@@ -81,8 +80,6 @@ query AllLeagues {
       }
       winner {
         _id
-      }
-    }
       }
     }
   }
