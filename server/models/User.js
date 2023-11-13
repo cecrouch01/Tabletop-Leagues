@@ -64,6 +64,21 @@ userSchema.pre('save', async function (next) {
   }
 });
 
+userSchema.virtual('leagueCount').get(function() {
+  return this.leagues.length;
+});
+
+userSchema.virtual('activeLeagues').get(async function () {
+  const League = model('League');
+  const leagues = await League.find({ 'members.user': this._id, active: true }).select('_id');
+  return leagues.map(league => league._id);
+});
+
+userSchema.virtual('inactiveLeagues').get(async function () {
+  const League = model('League');
+  const leagues = await League.find({ 'members.user': this._id, active: false }).select('_id');
+  return leagues.map(league => league._id);
+});
 
 const User = model('User', userSchema);
 
