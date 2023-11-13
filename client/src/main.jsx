@@ -7,6 +7,7 @@ import Dashboard from "./pages/Dashboard/Dashboard.jsx";
 import CreateLeague from './pages/CreateLeague/CreateLeague.jsx';
 import JoinLeagues from './pages/JoinLeagues/JoinLeagues.jsx';
 import SingleLeague from './pages/SingleLeague/SingleLeague.jsx';
+import SingleLeagueTest from './pages/SingleLeague/SingleLeagueTest.jsx';
 import Login from './pages/Login/Login.jsx';
 import SignUp from './pages/SignUp/SignUp.jsx';
 import './index.css'
@@ -32,6 +33,10 @@ const router = createBrowserRouter([
       {
         path: '/league/join',
         element: <JoinLeagues />
+      },
+      {
+        path: '/test',
+        element: <SingleLeagueTest /> 
       },
       {
         path: '/league/:leagueName',

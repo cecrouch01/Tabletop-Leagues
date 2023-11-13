@@ -1,3 +1,23 @@
+<<<<<<< HEAD
+import { gql } from '@apollo/client';
+
+// GraphQL mutation for joining a league
+export const JOIN_LEAGUE = gql`
+  mutation JoinLeague($leagueId: ID!) {
+    joinLeague(leagueId: $leagueId) {
+      success
+      message
+      league {
+        id
+        members {
+          id
+          name
+        }
+      }
+    }
+  }
+`;
+=======
 import {gql} from '@apollo/client';
 
 export const LOGIN_USER = gql`
@@ -26,3 +46,4 @@ mutation AddUser($email: String!, $password: String!, $description: String, $ico
   }
 `;
 
+>>>>>>> 7241674d526bd899a61c7889bce729ac5a035bcf
