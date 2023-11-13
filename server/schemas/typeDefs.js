@@ -37,7 +37,6 @@ type Member {
 input userInput {
     username: String
     email: String
-    password: String
     description: String
     icon: String
 }
@@ -46,9 +45,7 @@ input MembersInput {
 }
 
         
-input AddMemberInput {
-    league: ID!
-}
+
 
 
 type Query {
@@ -74,7 +71,7 @@ type Mutation {
     
     addLeague( name: String! description: String! admin: ID active: Boolean! password: String!): League
      updateLeague(active: Boolean members: MembersInput): League
-    addMember(members: AddMemberInput!): League
+    addMember(newMember: userInput!, leagueId: ID!): League
     deactivateLeague(leagueId: ID!, active: Boolean!): League
     createGame(users: [ID!]!): League
     updatePoints(leagueId: ID!): League
