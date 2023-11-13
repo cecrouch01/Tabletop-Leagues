@@ -1,3 +1,34 @@
+<<<<<<< HEAD
+import { gql } from '@apollo/client';
+
+
+// GraphQL query for fetching a single league's details
+export const GET_LEAGUE_DETAILS = gql`
+  query GetLeagueDetails($leagueId: ID!) {
+    league(id: $leagueId) {
+      id
+      name
+      game
+      organizer {
+        name
+        contactDetails
+      }
+      numberOfPlayers
+      startDate
+      endDate
+      records {
+        playerId
+        wins 
+        losses
+      }
+      members {
+        id
+        name
+      }
+    }
+  }
+  `;
+=======
 import {gql} from '@apollo/client'
 
 //Get all users
@@ -88,3 +119,4 @@ export const QUERY_SINGLE_LEAGUE = gql`
         }
     }
 `;
+>>>>>>> 7241674d526bd899a61c7889bce729ac5a035bcf

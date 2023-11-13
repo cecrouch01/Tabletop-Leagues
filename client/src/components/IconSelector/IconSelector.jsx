@@ -5,9 +5,12 @@ import { GiBattleAxe } from 'react-icons/gi';
 import { GiBull } from "react-icons/gi";
 import { GiAlienSkull } from 'react-icons/gi';
 import { useState } from 'react';
+<<<<<<< HEAD
+=======
 import { useColosseumContext } from '../../utils/ColosseumContext';
 import { CHOOSE_ICON } from '../../utils/actions';
 import 'react-bootstrap';
+>>>>>>> 7241674d526bd899a61c7889bce729ac5a035bcf
 
 export default function IconSelector() {
     const [active, setActive] = useState('')
