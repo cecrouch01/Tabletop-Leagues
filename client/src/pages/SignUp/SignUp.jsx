@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { useMutation } from '@apollo/client';
-
 import { useColosseumContext } from '../../utils/ColosseumContext';
 import './SignUp.css';
 import Auth from '../../utils/auth';
