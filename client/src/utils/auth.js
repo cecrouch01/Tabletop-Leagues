@@ -75,7 +75,7 @@ class AuthService {
   logout() {
     //TODO: find a way to avoid using window.location.reload and to push the logout to the db
     localStorage.removeItem('id_token');
-    // window.location.reload();
+    window.location.assign('/');
   }
 }
 
