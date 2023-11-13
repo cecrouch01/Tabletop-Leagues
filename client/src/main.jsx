@@ -36,7 +36,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/test',
-        element: <SingleLeagueTest /> 
+        element: <SingleLeagueTest />
       },
       {
         path: '/league/:leagueName',
