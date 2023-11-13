@@ -11,7 +11,7 @@ const resolvers = {
         throw AuthenticationError;
       },
       getUser: async (parent, user) => {
-        return await User.findOne(user._id);
+        return await User.findOne(user);
       },
       allUsers: async () => {
         return await User.find();
