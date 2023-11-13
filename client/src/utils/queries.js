@@ -64,14 +64,19 @@ query HompageQuery {
 `;
 // Get all Leagues
 export const QUERY_LEAGUES = gql`
-    query allLeagues {
+    query AllLeagues {
         allLeagues {
-            name
-            description
-            admin
-            members
-            games
-            active
+        active
+        description
+        name
+        admin {
+            username
+        }
+        members {
+            user {
+            username
+            }
+        }
         }
     }
 `;
@@ -85,6 +90,24 @@ export const QUERY_SINGLE_LEAGUE = gql`
             members
             games
             active
+        }
+    }
+`;
+
+export const QUERY_LEAGUE_BY_NAME = gql`
+    query LeaguesByName($name: String!) {
+        getLeagueByName(name: $name) {
+        active
+        description
+        name
+        admin {
+            username
+        }
+        members {
+            user {
+            username
+            }
+        }
         }
     }
 `;

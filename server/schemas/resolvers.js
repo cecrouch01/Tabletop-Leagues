@@ -22,6 +22,9 @@ const resolvers = {
       getLeague: async (parent, _id) => {
         return await League.findById(_id);
       },
+      getLeagueByName: async (parent, name) => {
+        return await League.find(name)
+      }
 
     },
   

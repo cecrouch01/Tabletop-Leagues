@@ -54,6 +54,7 @@ type Query {
     allUsers: [User]!
     allLeagues: [League]!
     getLeague(_id: ID!): League
+    getLeagueByName(name: String!): [League]!
 }
 
 type Auth {
