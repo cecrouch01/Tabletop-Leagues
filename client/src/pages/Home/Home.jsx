@@ -13,8 +13,7 @@ const Home = () => {
     const { loading, data } = useQuery(QUERY_HOMEPAGE);
     const allUsers = data?.allUsers || {};
     const allLeagues = data?.allLeagues || {}
-    console.log(allLeagues)
-
+   
     return (
         <div className="home-body">
             <div>

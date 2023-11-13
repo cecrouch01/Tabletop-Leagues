@@ -37,6 +37,10 @@
     padding: 5px;
     font-size: 2em;
 }
+.search-result{
+    display: flex;
+    justify-content: center;
+}
 .view-league {
     display: flex;
     flex-wrap: wrap;
