@@ -34,6 +34,10 @@ const router = createBrowserRouter([
         element: <JoinLeagues />
       },
       {
+        path: '/test',
+        element: <SingleLeagueTest />
+      },
+      {
         path: '/league/:leagueName',
         element: <SingleLeague />
       },

@@ -57,6 +57,8 @@
     }
     .sign-up-button {
       background-color: rgb(168, 168, 168);
+      font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+      color: black;
       display: flex;
       justify-content: center;
       align-items: center;

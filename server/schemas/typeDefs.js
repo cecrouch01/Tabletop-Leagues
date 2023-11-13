@@ -7,7 +7,10 @@ type User {
     wins: Int
     description: String
     icon: String
-    leagues: [League]
+    leagues: [LeagueArray]
+    leagueCount: Int
+    activeLeagues: [League]
+    inactiveLeagues: [League]
 }
 
 type League {
@@ -19,6 +22,13 @@ type League {
     games: [Game]
     active: Boolean
     password: String
+    memberCount: Int
+    gameCount: Int
+    winner: [User]
+}
+
+type LeagueArray {
+    league: League
 }
 
 type Game {
@@ -26,7 +36,7 @@ type Game {
 }
 
 type GamePlayer {
-    player: User!
+    user: User!
     place: Int
 }
 

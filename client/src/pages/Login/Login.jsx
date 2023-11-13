@@ -16,24 +16,25 @@ export default function Login() {
         const { name, value } = event.target;
         setUserFormData({ ...userFormData, [name]: value });
     };
-    
+
     const handleFormSubmit = async (e) => {
         e.preventDefault();
         try {
             const { data } = await loginUser({
-              variables: { ...userFormData },
+                variables: { ...userFormData },
             });
 
             if (error) {
                 throw new Error('User not logged in')
             }
             Auth.login(data.loginUser.token);
+            console.log('Test')
             alert(`User logged in!`);
-          } catch (err) {
+        } catch (err) {
             console.error(err);
         }
         setUserFormData({
-            username: '',
+            // username: '',
             email: '',
             password: '',
         });

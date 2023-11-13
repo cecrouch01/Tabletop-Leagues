@@ -2,7 +2,8 @@
 // import { useParams } from 'react-router-dom';
 // import { useQuery, useMutation } from '@apollo/client';
 // import AuthService from '../../utils/auth';
-// import './SingleLeague.css';
+import './SingleLeague.css';
+import LeagueCard from "../../components/LeagueCard/LeagueCard";
 
 const SingleLeague = () => {
   // const { leagueId } = useParams();
@@ -45,7 +46,14 @@ const SingleLeague = () => {
   // if (isError) return <div>An Error Occurred: {error?.message}</div>;
 
   return (
-    <h1>Single League</h1>
+    <div className="league-container">
+      <h2 className='league-header'>League Name</h2>
+      <div className='league-card'>
+        <LeagueCard />
+      </div>
+
+    </div>
+
     // <div className="single-league-container">
     //   <h1 className="league-name">{leagueDetails?.name}</h1>
     //   <h2 className="league-game">{leagueDetails?.game}</h2>

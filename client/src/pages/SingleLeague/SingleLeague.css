@@ -1,4 +1,4 @@
-.single-league-container {
+/* .single-league-container {
     max-width: 800px;
     margin: 20px auto;
     padding: 20px;
@@ -36,7 +36,7 @@
   }
   
   /* Button styles */
-  button {
+  /* button {
     background-color: #5cb85c;
     color: white;
     padding: 10px 20px;
@@ -54,22 +54,44 @@
   button:disabled {
     background-color: #cccccc;
     cursor: not-allowed;
-  }
+  } */
   
   /* Error message styles */
-  .error {
+  /* .error {
     color: #d9534f;
     margin: 10px 0;
-  }
+  } */
   
   /* Success message styles */
-  .success {
+  /* .success {
     color: #5cb85c;
     margin: 10px 0;
-  }
+  } */
   
   /* If you have specific styles for LeagueStats and GameScore, you can add them here */
   /* Example: */
-  .league-stats, .game-score {
+  /* .league-stats, .game-score {
     margin-bottom: 20px;
+  }  */
+
+  .league-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: black;
+    width: 100%;
+    height: 100%;
+  }
+
+  .league-header{
+    margin: 0;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: #ff914d;
+    font-size: 2em;
+    -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: #d84727;
+  }
+
+  .league-card {
+    margin: 1.5em;
   }
