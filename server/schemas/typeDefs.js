@@ -32,7 +32,7 @@ type Game {
 }
 
 type GamePlayer {
-    player: User!
+    user: User!
     place: Int
 }
 
