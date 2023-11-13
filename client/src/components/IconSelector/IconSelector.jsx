@@ -5,19 +5,16 @@ import { GiBattleAxe } from 'react-icons/gi';
 import { GiBull } from "react-icons/gi";
 import { GiAlienSkull } from 'react-icons/gi';
 import { useState } from 'react';
-<<<<<<< HEAD
-=======
 import { useColosseumContext } from '../../utils/ColosseumContext';
 import { CHOOSE_ICON } from '../../utils/actions';
 import 'react-bootstrap';
->>>>>>> 7241674d526bd899a61c7889bce729ac5a035bcf
 
 export default function IconSelector() {
     const [active, setActive] = useState('')
     const [state, dispatch] = useColosseumContext();
     const handleClick = (link) => {
         setActive(link)
-        dispatch({type: CHOOSE_ICON, payload: link })
+        dispatch({ type: CHOOSE_ICON, payload: link })
     }
 
     return (
@@ -26,23 +23,28 @@ export default function IconSelector() {
             <div className='icons'>
                 <button onClick={(e) => {
                     e.preventDefault()
-                    handleClick('angel')}} 
+                    handleClick('angel')
+                }}
                     className={active === 'angel' ? 'icon-item active' : 'icon-item'}>< GiAngelWings /></button>
                 <button onClick={(e) => {
-                     e.preventDefault()
-                    handleClick('aries')}} 
+                    e.preventDefault()
+                    handleClick('aries')
+                }}
                     className={active === 'aries' ? 'icon-item active' : 'icon-item'}><GiAries /></button>
                 <button onClick={(e) => {
-                     e.preventDefault()
-                    handleClick('axe')}} 
+                    e.preventDefault()
+                    handleClick('axe')
+                }}
                     className={active === 'axe' ? 'icon-item active' : 'icon-item'}><GiBattleAxe /></button>
                 <button onClick={(e) => {
-                     e.preventDefault()
-                    handleClick('bull')}} 
-                className={active === 'bull' ? 'icon-item active' : 'icon-item'}><GiBull /></button>
+                    e.preventDefault()
+                    handleClick('bull')
+                }}
+                    className={active === 'bull' ? 'icon-item active' : 'icon-item'}><GiBull /></button>
                 <button onClick={(e) => {
-                     e.preventDefault()
-                    handleClick('alien')}} 
+                    e.preventDefault()
+                    handleClick('alien')
+                }}
                     className={active === 'alien' ? 'icon-item active' : 'icon-item'}><GiAlienSkull /></button>
             </div>
         </div>

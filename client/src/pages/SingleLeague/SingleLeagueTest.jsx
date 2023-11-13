@@ -13,9 +13,9 @@ const SingleLeague = () => {
   // const [joinLeague, { data: joinData, loading: joinLoading, error: joinError }] = useMutation(JOIN_LEAGUE);
 
   // Test data for development
-  const league = { 
-    id: "Jdemasse", 
-    name: "Joseph DeMasse", 
+  const league = {
+    id: "Jdemasse",
+    name: "Joseph DeMasse",
     game: "Yugioh",
     organizer: {
       name: "Caleb Crouch",
@@ -23,7 +23,7 @@ const SingleLeague = () => {
       records: {
         id: "some_player_id",
         wins: 10,
-        losses: 5, 
+        losses: 5,
       },
       members: {
         id: "some_member_id",
