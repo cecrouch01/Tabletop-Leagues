@@ -8,6 +8,9 @@ type User {
     description: String
     icon: String
     leagues: [League]
+    leagueCount: Int
+    activeLeagues: [League]
+    inactiveLeagues: [League]
 }
 
 type League {
@@ -19,6 +22,9 @@ type League {
     games: [Game]
     active: Boolean
     password: String
+    memberCount: Int
+    gameCount: Int
+    winner: [User]
 }
 
 type Game {

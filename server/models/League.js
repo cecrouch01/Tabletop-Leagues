@@ -64,7 +64,35 @@ const leagueSchema = new Schema ({
   },
 );
 
+leagueSchema.virtual('memberCount').get(function() {
+    return this.members.length;
+});
 
+leagueSchema.virtual('gameCount').get(function() {
+    return this.games.length;
+});
+
+leagueSchema.virtual('winner').get(function() {
+    if (!this.active) {
+        let maxPoints = -1;
+        let winners = [];
+
+        for (const member of this.members) {
+            if (member.points > maxPoints) {
+                maxPoints = member.points;
+                winners = [member.user];
+            } else if (member.points === maxPoints) {
+                winners.push(member.user);
+            }
+        }
+
+        if (winners.length > 0) {
+            return winners;
+        }
+    }
+
+    return null;
+});
 
 const League = model('League', leagueSchema);
 
