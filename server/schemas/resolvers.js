@@ -128,33 +128,18 @@ const resolvers = {
           throw new AuthenticationError('An error occurred');
         }
       },
-      addMember: async (parent, context, {members}) => {
-        try {
-          if (!context.user || !context.user._id) {
-            throw new AuthenticationError('User not authenticated');
-          }
-  
-          const user = await User.findById(context.user._id);
-  
-          if (members) {
-            const newMember = {
-              user: user._id,
-            };
-  
-            const updatedLeague = await League.findOneAndUpdate(
-              { _id: League._id },
-              { $push: { members: newMember } },
-              { new: true }
-            );
-  
-            return { success: true, message: 'Member added successfully', league: updatedLeague };
-          }
-  
-          throw new AuthenticationError('No valid parameters provided');
-        } catch (error) {
+      addMember: async (parent, {newMember, leagueId}, context) => {
+        if (context.user) {
+          let newMember = context.user;
 
-          throw new AuthenticationError('An error occurred');
+          const updatedLeague = await League.findByIdAndUpdate(
+            { _id: leagueId},
+            { $addToSet: { members: newMember } },
+            { new: true, runValidators: true }
+          )
+          return updatedLeague;
         }
+        throw new Error(AuthenticationError);
       },
       //ADMIN responbility
       deactivateLeague: async (parent, { leagueId, active } ) => {
