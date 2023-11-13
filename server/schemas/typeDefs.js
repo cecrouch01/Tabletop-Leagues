@@ -7,7 +7,7 @@ type User {
     wins: Int
     description: String
     icon: String
-    leagues: [League]
+    leagues: [LeagueArray]
     leagueCount: Int
     activeLeagues: [League]
     inactiveLeagues: [League]
@@ -25,6 +25,10 @@ type League {
     memberCount: Int
     gameCount: Int
     winner: [User]
+}
+
+type LeagueArray {
+    league: League
 }
 
 type Game {
