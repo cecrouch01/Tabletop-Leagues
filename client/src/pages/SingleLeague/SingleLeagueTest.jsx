@@ -5,6 +5,7 @@ import './SingleLeague.css';
 // import AuthService from '../../utils/auth'; // Uncomment if AuthService is needed
 
 const SingleLeague = () => {
+  console.log('Test')
   // Uncomment the below lines if you are fetching data from an API
   // const { leagueId } = useParams();
   // const { loading, error, data } = useQuery(GET_LEAGUE_DETAILS, {
@@ -13,24 +14,24 @@ const SingleLeague = () => {
   // const [joinLeague, { data: joinData, loading: joinLoading, error: joinError }] = useMutation(JOIN_LEAGUE);
 
   // Test data for development
-  const league = {
-    id: "Jdemasse",
-    name: "Joseph DeMasse",
-    game: "Yugioh",
-    organizer: {
-      name: "Caleb Crouch",
-      contactDetails: "ThisIsMyEmail@gmail.com",
-      records: {
-        id: "some_player_id",
-        wins: 10,
-        losses: 5,
-      },
-      members: {
-        id: "some_member_id",
-        name: "Member Name"
-      }
-    }
-  };
+  // const league = {
+  //   id: "Jdemasse",
+  //   name: "Joseph DeMasse",
+  //   game: "Yugioh",
+  //   organizer: {
+  //     name: "Caleb Crouch",
+  //     contactDetails: "ThisIsMyEmail@gmail.com",
+  //     records: {
+  //       id: "some_player_id",
+  //       wins: 10,
+  //       losses: 5,
+  //     },
+  //     members: {
+  //       id: "some_member_id",
+  //       name: "Member Name"
+  //     }
+  //   }
+  // };
 
   // Uncomment if using AuthService to check user login
   // const user = AuthService.getProfile();
@@ -50,24 +51,18 @@ const SingleLeague = () => {
   // if (error) return <div>An Error Occurred: {error.message}</div>;
 
   return (
-    <div className="single-league-container">
-      <h1 className="league-name">{league.name}</h1>
-      <h2 className="league-game">{league.game}</h2>
-      <div className="league-details">
-        <p><strong>Organizer:</strong> {league.organizer.name}</p>
-        <p><strong>Contact:</strong> {league.organizer.contactDetails}</p>
-        <p><strong>Number of Players:</strong> {/* Insert the number of players here */}</p>
-      </div>
+    <h1>Single League Test Page</h1>
+    // <div className="single-league-container">
+    //   <h1 className="league-name">{league.name}</h1>
+    //   <h2 className="league-game">{league.game}</h2>
+    //   <div className="league-details">
+    //     <p><strong>Organizer:</strong> {league.organizer.name}</p>
+    //     <p><strong>Contact:</strong> {league.organizer.contactDetails}</p>
+    //     <p><strong>Number of Players:</strong> {/* Insert the number of players here */}</p>
+    //   </div>
 
-      {/* Uncomment and modify as needed for join league functionality */}
-      {/* {isLoggedIn && (
-        <button onClick={handleJoinLeague} disabled={joinLoading}>
-          {joinLoading ? 'Joining...' : 'Join League'}
-        </button>
-      )}
-      {joinError && <p className="error">Error joining league: {joinError.message}</p>}
-      {joinData && joinData.joinLeague.success && <p className="success">{joinData.joinLeague.message}</p>} */}
-    </div>
+
+
   );
 };
 
