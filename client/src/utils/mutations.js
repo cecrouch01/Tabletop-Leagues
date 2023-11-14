@@ -45,18 +45,13 @@ mutation AddUser($email: String!, $password: String!, $description: String, $ico
 // `;
 
 export const ADD_LEAGUE = gql`
-  mutation AddLeague($name: String, $description: String, $admin: String, $active: Boolean, $password: String) {
-    addLeague(name: $name, description: $description, admin: $admin, active: $active, password: $password) 
-    } {
-      token
-      league {
-        name
-        description
-        admin
-        active
-        password
-      }
+  mutation AddLeague($name: String!, $description: String!, $password: String!) {
+    addLeague(name: $name, description: $description, password: $password) {
+      name
+      description
+      password
     }
+  }
 `;
 
 export const ADD_MEMBER = gql`
@@ -71,7 +66,7 @@ export const ADD_MEMBER = gql`
       }
     }
   }
-`
+`;
 
 export const DEACTIVATE_LEAGUE = gql`
   mutation DeactivateLeague($leagueId: ID!, $active: boolean) {
