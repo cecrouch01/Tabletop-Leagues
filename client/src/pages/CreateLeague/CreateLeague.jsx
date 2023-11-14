@@ -2,17 +2,19 @@ import { useState } from 'react';
 import { useMutation } from '@apollo/client';
 // import { checkPassword } from '../../utils/helpers';
 // import { useColosseumContext } from '../../utils/ColosseumContext';
-// import Auth from '../../utils/auth';
+import Auth from '../../utils/auth';
 import { ADD_LEAGUE } from '../../utils/mutations';
 import './CreateLeague.css';
 
 const CreateLeague = () => {
-    const [leagueName, setLeagueName] = useState('');
-    const [password, setPassword] = useState('');
-    const [leagueDescription, setLeagueDescription] = useState('');
+    // const [leagueName, setLeagueName] = useState('');
+    // const [password, setPassword] = useState('');
+    // const [leagueDescription, setLeagueDescription] = useState('');
     const [passwordErrorMessage, setPasswordErrorMessage] = useState('');
     const [nameErrorMessage, setNameErrorMessage] = useState('');
-    const [addCreateLeagueData, setAddCreateLeagueData] = useState({ name: '', password: '', leagueDescription: '' })
+    
+
+    const [addCreateLeagueData, setAddCreateLeagueData] = useState({ name: '', description: '', password: '' })
     const [addLeague, { error }] = useMutation(ADD_LEAGUE);
     // const [state, dispatch] useColosseumContext();
 
@@ -23,38 +25,46 @@ const CreateLeague = () => {
 
     const handleFormSubmit = async (e) => {
         e.preventDefault();
+
+        const token = Auth.loggedIn() ? Auth.getToken() : null;
+
+        if (!token) {
+            throw new Error('User not signed in');
+        }
+
         try {
-            const { data } = await addLeague({
+            await addLeague({
                 variables: { ...addCreateLeagueData }
             })
-            console.log(data);
-            // if (leagueName === '') {
-            //     setNameErrorMessage('Please input a league name');
-            //     return;
-            // } else if (!checkPassword(password)) {
-            //     setPasswordErrorMessage(
-            //         `Password must contain 8 characters including numbers and letters`
-            //     );
-            //     return;
-            // }
-            if (error) {
-                throw new Error("sign up didn't work")
-            }
-            // Auth.login(data.addLeague.token);
-            alert(`${leagueName} created!`);
-        } catch (err) {
-            console.log(err)
+            
+            // setAddCreateLeagueData({
+            //     name: '',
+            //     description: '',
+            //     password: '',
+            // })
+            alert('League created!');
+
+        } catch (error) {
+            console.log(token);
+            console.log(addCreateLeagueData);
+            console.log(error);
+            throw new Error("sign up didn't work");
         }
 
 
         //TODO: Tie this form to the back end
         // console.log(leagueName)
         // console.log(leagueDescription)
-        setLeagueName('');
-        setPassword('');
-        setLeagueDescription('');
-        setNameErrorMessage('');
-    }
+        // setLeagueName('');
+        // setPassword('');
+        // setLeagueDescription('');
+        // setNameErrorMessage('');
+        setAddCreateLeagueData({
+            name: '',
+            description: '',
+            password: '',
+        })
+    };
 
     return (
         <div className="container text-center">
@@ -63,14 +73,16 @@ const CreateLeague = () => {
                 <input
                     placeholder="League Name"
                     type='text'
-                    value={leagueName.name}
+                    name='name'
+                    value={addCreateLeagueData.name}
                     onChange={handleInputChange}
                     className='frm-input'
                 />
                 <input
                     placeholder="Create Password"
                     type='password'
-                    value={password.password}
+                    name='password'
+                    value={addCreateLeagueData.password}
                     onChange={handleInputChange}
                     className='frm-input'
                 />
@@ -78,7 +90,8 @@ const CreateLeague = () => {
                 <textarea
                     placeholder="League Description"
                     type='text'
-                    value={leagueDescription.description}
+                    name='description'
+                    value={addCreateLeagueData.description}
                     className='frm-input'
                     id='description'
                     onChange={handleInputChange}
@@ -95,4 +108,4 @@ const CreateLeague = () => {
     )
 };
 
-export default CreateLeague
+export default CreateLeague;
