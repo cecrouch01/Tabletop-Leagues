@@ -80,7 +80,7 @@ type Mutation {
     updateUser(id: ID!, wins: Int, username: String, email: String, password: String, description: String, icon: String, addToLeagues: [ID]):User
     removeUser(_id: ID!): User
     
-    addLeague( name: String! description: String! admin: ID active: Boolean! password: String!): League
+    addLeague( name: String! description: String! admin: ID active: Boolean password: String!): League
      updateLeague(active: Boolean members: MembersInput): League
     addMember(leagueId: ID!): League
     deactivateLeague(leagueId: ID!, active: Boolean!): League

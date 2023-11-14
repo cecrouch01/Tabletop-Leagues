@@ -34,7 +34,7 @@ const router = createBrowserRouter([
         element: <JoinLeagues />
       },
       {
-        path: '/league/:leagueName',
+        path: '/league/:id',
         element: <SingleLeague />
       },
       {

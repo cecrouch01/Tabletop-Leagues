@@ -15,11 +15,11 @@ const Dashboard = () => {
     return (
         <div className='dshbrd-container'>
             <div className='dshbrd-user-card'>
-                <UserCard 
-                username={username}
-                icon={icon}
-                description={description}
-                wins={wins}
+                <UserCard
+                    username={username}
+                    icon={icon}
+                    description={description}
+                    wins={wins}
                 />
             </div>
             <div className='dshbrd-contents'>

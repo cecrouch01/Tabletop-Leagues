@@ -1,4 +1,4 @@
-import {gql} from '@apollo/client'
+import { gql } from '@apollo/client'
 
 //Get all users
 export const QUERY_USERS = gql`
@@ -14,7 +14,7 @@ export const QUERY_USERS = gql`
             leagueCount
           }
         }
-`; 
+`;
 //Get Me
 export const QUERY_ME = gql`
 query GetMe {
@@ -50,6 +50,7 @@ query HompageQuery {
       wins
     }
     allLeagues {
+      _id
       active
       admin {
         username
