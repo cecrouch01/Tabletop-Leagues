@@ -2,6 +2,7 @@
 import { useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 // import AuthService from '../../utils/auth';
+import AdminForm from '../../components/AdminForm/AdminForm';
 import './SingleLeague.css';
 import LeagueCard from "../../components/LeagueCard/LeagueCard";
 import Card from '../../components/Card/Card';
@@ -64,7 +65,7 @@ const SingleLeague = () => {
           creator={league.admin?.username}
           totalPlayers={league.members?.length} />
       </div>
-
+      <AdminForm />
     </div>
 
     // <div className="single-league-container">

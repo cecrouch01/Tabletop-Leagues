@@ -29,6 +29,7 @@ export default function SignUp() {
             if (error) {
                 throw new Error("sign up didn't work")
             }
+            console.log(data.addUser.token);
             Auth.login(data.addUser.token);
             alert(`Welcome to Colosseum!`);
         } catch (err) {

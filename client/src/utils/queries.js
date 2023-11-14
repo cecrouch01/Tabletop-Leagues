@@ -43,27 +43,22 @@ query GetMe {
 `;
 export const QUERY_HOMEPAGE = gql`
 query HompageQuery {
-    allUsers {
+  allUsers {
+    username
+    icon
+    description
+  }
+  allLeagues {
+    name
+    description
+    active
+    gameCount
+    memberCount
+    admin {
       username
-      description
-      icon
-      wins
-    }
-    allLeagues {
-      _id
-      active
-      admin {
-        username
-      }
-      description
-      name
-      members {
-        user {
-          username
-        }
-      }
     }
   }
+}
 `;
 // Get all Leagues
 export const QUERY_LEAGUES = gql`

@@ -7,10 +7,9 @@ import { QUERY_USERS, QUERY_ME, QUERY_HOMEPAGE } from "../../utils/queries";
 import './Home.css';
 
 const Home = () => {
-    // const highScores = [1, 2, 3, 4, 5]
-    // const topLeagues = [1, 2, 3, 4, 5]
 
     const { loading, data } = useQuery(QUERY_HOMEPAGE);
+
     const allUsers = data?.allUsers || {};
     const allLeagues = data?.allLeagues || {}
 
@@ -34,14 +33,13 @@ const Home = () => {
                 <h2 className="column-title">Top Leagues</h2>
                 {loading ? <p>Loading</p> : allLeagues.map((league, index) => {
                     return (
-                        <LeagueCard
-                            key={league._id}
-                            description={league.description}
-                            name={league.name}
-                            creator={league.admin.username}
-                            totalPlayers={league.members.length}
-                            id={league._id}
-                        />
+                    <LeagueCard 
+                        key={index} 
+                        description={league.description}
+                        name={league.name}
+                        creator={league.admin.username}
+                        totalPlayers={league.memberCount}
+                    />
                     )
                 })}
             </div>
