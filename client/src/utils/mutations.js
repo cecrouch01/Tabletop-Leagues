@@ -55,15 +55,10 @@ export const ADD_LEAGUE = gql`
 `;
 
 export const ADD_MEMBER = gql`
-  mutation AddMember($newMember: userInput!, $leagueId: ID!) {
-    addMember(newMember: $newMember, leagueId: $leagueId) {
-      league {
-        name
-        description
-        admin
-        active
-        password
-      }
+mutation AddMember($leagueId: ID!) {
+    addMember(leagueId: $leagueId) {
+      name
+      description
     }
   }
 `;

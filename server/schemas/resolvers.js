@@ -128,15 +128,19 @@ const resolvers = {
           //   throw new AuthenticationError('An error occurred');
           // }
       },
-      addMember: async (parent, {userInput, leagueId}, context) => {
+      addMember: async (parent, {leagueId} , context) => {
+      
         if (context.user) {
+          console.log(context.user)
+          console.log(leagueId)
           let userInput = context.user;
 
           const updatedLeague = await League.findByIdAndUpdate(
             { _id: leagueId},
-            { $addToSet: { members: userInput } },
+            { $addToSet: { members:  userInput  }},
             { new: true, runValidators: true }
           )
+          console.log(updatedLeague)
           return updatedLeague;
         }
         throw new Error(AuthenticationError);
