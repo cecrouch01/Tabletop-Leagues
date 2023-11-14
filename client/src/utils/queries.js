@@ -77,6 +77,7 @@ query AllLeagues {
       gameCount
       admin {
         _id
+        username
       }
       winner {
         _id

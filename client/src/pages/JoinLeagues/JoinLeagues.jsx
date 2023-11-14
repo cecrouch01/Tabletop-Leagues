@@ -1,6 +1,7 @@
 import { useQuery, useMutation, useLazyQuery } from "@apollo/client";
 import { useState, useEffect} from "react";
 import { QUERY_LEAGUES, QUERY_LEAGUE_BY_NAME} from "../../utils/queries";
+import { ADD_MEMBER } from "../../utils/mutations";
 import LeagueCard from "../../components/LeagueCard/LeagueCard";
 import { AiOutlineSearch } from 'react-icons/ai';
 import './JoinLeagues.css'
@@ -14,9 +15,10 @@ const JoinLeagues = () => {
 
     const { loading: allLeaguesLoading, data: allLeaguesData } = useQuery(QUERY_LEAGUES)
     const allLeagues = allLeaguesData?.allLeagues || {}
-
-    const [getLeague, { loading: leagueByNameLoading, data: leagueByNameData, error}] = useLazyQuery(QUERY_LEAGUE_BY_NAME);
+    // console.log(allLeagues)
+    const [getLeague, { loading: leagueByNameLoading, data: leagueByNameData}] = useLazyQuery(QUERY_LEAGUE_BY_NAME);
     const leagueByName = leagueByNameData?.getLeagueByName || {}
+    const [addMember, { error }] = useMutation(ADD_MEMBER)
 
     return (
     <div className="join-league-container">
@@ -41,8 +43,8 @@ const JoinLeagues = () => {
                 <LeagueCard 
                 description={leagueByName[0]?.description || "no league found"}
                 name={leagueByName[0]?.name || "no league found"}
-                creator={leagueByName[0]?.admin.username || "no league found"}
-                totalPlayers={leagueByName[0]?.members.length || "no league found"}
+                creator={leagueByName[0]?.admin.username || "no creator found"}
+                totalPlayers={leagueByName[0]?.memberCount || "no league found"}
                 >
                     <button className="join-btn">Join</button>
                 </LeagueCard>
@@ -57,9 +59,19 @@ const JoinLeagues = () => {
                         description={league.description}
                         name={league.name}
                         creator={league.admin.username}
-                        totalPlayers={league.members.length}
+                        totalPlayers={league.memberCount}
                         >
-                            <button className="join-btn">Join</button>
+                            <button 
+                                onClick={async (event) => {
+                                event.preventDefault();
+                                console.log(league._id)
+                                const { data } = await addMember({
+                                    variables: { leagueId: league._id }
+                                })
+                                console.log( data )
+                                }}
+                                className="join-btn"
+                            >Join</button>
                         </LeagueCard>
                     )
                 }
@@ -74,9 +86,19 @@ const JoinLeagues = () => {
                             description={league.description}
                             name={league.name}
                             creator={league.admin.username}
-                            totalPlayers={league.members.length}
+                            totalPlayers={league.memberCount}
                             >
-                                <button className="join-btn">Join</button>
+                                <button 
+                                    onClick={async (event) => {
+                                    event.preventDefault();
+                                    console.log(league._id)
+                                    const { data } = await addMember({
+                                        variables: { leagueId: league._id }
+                                    })
+                                    console.log( data )
+                                    }}
+                                    className="join-btn"
+                                >Join</button>
                             </LeagueCard>
                         )
                     }

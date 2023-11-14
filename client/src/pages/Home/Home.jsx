@@ -21,11 +21,11 @@ const Home = () => {
                 {loading ? <p>Loading</p> : allUsers.map((user, index) => {
                     return (
                         <UserCard 
-                        key={index} 
-                        username={user.username}
-                        wins={user.wins}
-                        icon={user.icon}
-                        description={user.description}
+                            key={index} 
+                            username={user.username}
+                            wins={user.wins}
+                            icon={user.icon}
+                            description={user.description}
                         /> 
                     )
                 })}
@@ -34,7 +34,8 @@ const Home = () => {
                 <h2 className="column-title">Top Leagues</h2>
                 {loading ? <p>Loading</p> : allLeagues.map((league, index) => {
                     return (
-                    <LeagueCard key={index} 
+                    <LeagueCard 
+                        key={index} 
                         description={league.description}
                         name={league.name}
                         creator={league.admin.username}
