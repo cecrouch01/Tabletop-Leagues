@@ -35,7 +35,7 @@ class AuthService {
   logout() {
     //TODO:session find a way to avoid using window.location.reload and to push the logout to the db
     sessionStorage.removeItem('id_token');
-    window.location.assign('/dashboard');
+    window.location.assign('/');
   }
 }
 
