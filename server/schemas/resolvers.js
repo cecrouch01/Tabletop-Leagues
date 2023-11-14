@@ -1,5 +1,6 @@
 const { User, League } = require('../models');
 const { signToken, AuthenticationError } = require('../utils/auth');
+const { ObjectId } = require('mongodb');
 const bcrypt = require('bcrypt');
 
 const resolvers = {
@@ -171,75 +172,44 @@ const resolvers = {
         }
       },
       //ADMIN responsibility
-      createGame: async (parent, { users }) => {
-        try {
-          const usersData = await User.find({ _id: { $in: users } });
-  
-          if (usersData.length !== users.length) {
-            throw new Error('Invalid user ID(s) provided');
-          }
-  
-          const newGame = new Game({
-            game: usersData.map((user, index) => ({
-              user: user._id,
-              place: index +1
-            })),
-          });
-  
-          // Save the new game to the database
-          const savedGame = await newGame.save();
-  
-          return savedGame;
-        } catch (error) {
-          throw new Error(`Error creating game: ${error.message}`);
-        }
+      createGame: async (parent, { leagueId }) => {
+        const league = await League.findById(leagueId);
+        let members = league.members; 
+        console.log('1', members);
+        members = await User.find({
+          '_id': { $in: members.map(member => new ObjectId(member._id))}
+        })
+        const games = members.map (member => {
+             return({game:{
+              user: new ObjectId(member._id),
+              place: 0
+             }});
+        });
+        console.log('2', members);    
+        
+
+        if (!league) {throw new Error('League not found');}
+        if (!games) {throw new Error('Game not created');}
+        const updatedLeague = await League.findByIdAndUpdate( leagueId,
+          { $push: { games } },
+          { new: true, runValidators: true }
+      );
+      console.log(updatedLeague);
+      if (!updatedLeague) {
+        throw new Error('Error updating league')
+      }
+          return(updatedLeague);
       },
       
-      updatePoints: async (parent, {game, _id}) => {
-      try {
-        // Find the league by ID
-        const league = await League.findOne({ league: _id});
-    
-        if (!league) {
-          throw new Error('League not found');
-        }
-    
-        const games = await League.game.find({ game });
-    
-        for (const game of games) {
-          const pointsMap = {
-            1: 4,
-            2: 3,
-            3: 2,
-            4: 1,
-          };
-    
-          for (const member of game.members) {
-            const pointsToAdd = pointsMap[member.place];
-    
-            const memberData = await League.member.findOne({ user: member.user, league: _id});
-    
-            if (memberData) {
-              memberData.points = (memberData.points || 0) + pointsToAdd;
-              await memberData.save();
-            } else {
-              const newMember = new League.member({
-                user: member.user,
-                points: pointsToAdd,
-                league: league._id,
-              });
-              await newMember.save();
-            }
-          }
-        }
-    
-        return 'Points updated successfully';
-      } catch (error) {
-        throw new Error(`Error updating points: ${error.message}`);
-      }
-    }, 
+      updateLeague: async (parent, { leagueId }) => {
+        const league = await League.findbyId({ leagueId });
+        
+        
+        
+      },
+       
+  
     },
-      
   };
   
   module.exports = resolvers;
