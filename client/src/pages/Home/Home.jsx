@@ -7,12 +7,11 @@ import {  QUERY_USERS, QUERY_ME, QUERY_HOMEPAGE } from "../../utils/queries";
 import './Home.css';
 
 const Home = () => {
-    const highScores = [1, 2, 3, 4, 5]
-    const topLeagues = [1, 2, 3, 4, 5]
-
     const { loading, data } = useQuery(QUERY_HOMEPAGE);
+
     const allUsers = data?.allUsers || {};
     const allLeagues = data?.allLeagues || {}
+
    
     return (
         <div className="home-body">
@@ -39,7 +38,7 @@ const Home = () => {
                         description={league.description}
                         name={league.name}
                         creator={league.admin.username}
-                        totalPlayers={league.members.length}
+                        totalPlayers={league.memberCount}
                     />
                     )
                 })}
