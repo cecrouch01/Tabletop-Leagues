@@ -91,21 +91,21 @@ async function getLeagueId(userLeagueSeeds) {
   }
 }
 
-// async function rehashPasswords() {
-//   try {
-//     const users = await User.find();
+async function rehashPasswords() {
+  try {
+    const users = await User.find();
 
-//     for (const user of users) {
-//       const newPasswordHash = await bcrypt.hash(user.password, 10);
+    for (const user of users) {
+      const newPasswordHash = await bcrypt.hash(user.password, 10);
 
-//       await User.findByIdAndUpdate(user._id, { password: newPasswordHash });
-//     }
+      await User.findByIdAndUpdate(user._id, { password: newPasswordHash });
+    }
 
-//     console.log('Passwords rehashed successfully.');
-//   } catch (error) {
-//     console.error('Error rehashing passwords:', error);
-//   }
-// }
+    console.log('Passwords rehashed successfully.');
+  } catch (error) {
+    console.error('Error rehashing passwords:', error);
+  }
+}
 
 
 db.once('open', async () => {
@@ -114,7 +114,7 @@ db.once('open', async () => {
     await League.deleteMany({});
     await User.insertMany(userSeeds);
     console.log('Users seeded successfully.');
-    // await rehashPasswords();
+    await rehashPasswords();
 
     const updatedLeaguesData = await getUserId(leagueSeeds);
     await League.insertMany(updatedLeaguesData);
