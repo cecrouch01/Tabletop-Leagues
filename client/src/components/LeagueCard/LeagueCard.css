@@ -1,6 +1,12 @@
 .league-card-contents {
 height: 100%;
 }
+
+.card-link{
+    color:black;
+    text-decoration: none;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
 .league-contents {
     display: flex;
     align-items: center;

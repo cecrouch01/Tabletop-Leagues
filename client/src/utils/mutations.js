@@ -45,7 +45,7 @@ mutation AddUser($email: String!, $password: String!, $description: String, $ico
 // `;
 
 export const ADD_LEAGUE = gql`
-  mutation AddLeague($name: String!, $description: String!, $password: String!) {
+  mutation addLeague($name: String!, $description: String!, $password: String!) {
     addLeague(name: $name, description: $description, password: $password) {
       name
       description
