@@ -12,6 +12,7 @@ const Home = () => {
 
     const allUsers = data?.allUsers || {};
     const allLeagues = data?.allLeagues || {}
+    console.log(allLeagues)
 
     return (
         <div className="home-body">
@@ -39,6 +40,7 @@ const Home = () => {
                         name={league.name}
                         creator={league.admin.username}
                         totalPlayers={league.memberCount}
+                        id={league._id}
                     />
                     )
                 })}

@@ -60,7 +60,7 @@ input MembersInput {
 
 type Query {
     getMe: User!
-    getUser(_id: ID!): User!
+    getUser(_id: [ID]!): [User]!
     allUsers: [User]!
     allLeagues: [League]!
     getLeague(_id: ID!): League

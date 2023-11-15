@@ -15,6 +15,18 @@ export const QUERY_USERS = gql`
           }
         }
 `;
+
+export const QUERY_SINGLE_USER = gql`
+  query GetUser($id: [ID!]!) {
+    getUser(_id: $id) {
+      _id
+      username
+      icon
+      description
+      wins
+    }
+  }
+`;
 //Get Me
 export const QUERY_ME = gql`
 query GetMe {
@@ -49,6 +61,7 @@ query HompageQuery {
     description
   }
   allLeagues {
+    _id
     name
     description
     active
@@ -84,7 +97,7 @@ query AllLeagues {
 //Get specific League
 export const QUERY_SINGLE_LEAGUE = gql`
 query GetLeague($id: ID!) {
-    getLeague(_id: $id) {
+    getLeague( _id: $id ) {
       _id
       active
       name
@@ -94,20 +107,21 @@ query GetLeague($id: ID!) {
         _id
       }
       winner {
-        _id
+        username
       }
       memberCount
-      gameCount
       members {
-        points
         user {
           _id
+          username
         }
+        points
       }
       games {
         game {
           place
           user {
+            username
             _id
           }
         }
