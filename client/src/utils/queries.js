@@ -59,6 +59,7 @@ query HompageQuery {
     username
     icon
     description
+    wins
   }
   allLeagues {
     _id
