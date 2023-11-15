@@ -32,7 +32,7 @@ const Dashboard = () => {
                             key={index} 
                             description={league.description}
                             name={league.name}
-                            creator={league.admin.username}
+                            creator={league.admin._id}
                             totalPlayers={league.memberCount}
                             id={league._id}
                         />
@@ -47,7 +47,7 @@ const Dashboard = () => {
                             key={index}
                             description={league.description}
                             name={league.name}
-                            creator={league.admin.username}
+                            creator={league.admin._id}
                             totalPlayers={league.memberCount}
                             id={league._id}
                         />

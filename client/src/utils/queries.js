@@ -68,7 +68,7 @@ query HompageQuery {
     gameCount
     memberCount
     admin {
-      username
+      _id
     }
   }
 }
@@ -86,7 +86,6 @@ query AllLeagues {
       gameCount
       admin {
         _id
-        username
       }
       winner {
         _id

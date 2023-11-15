@@ -81,7 +81,7 @@ type Mutation {
     removeUser(_id: ID!): User
     
     addLeague( name: String! description: String! admin: ID active: Boolean password: String!): League
-     updateLeague(active: Boolean members: MembersInput): League
+    updateLeague(active: Boolean members: MembersInput): League
     addMember(leagueId: ID!): League
     deactivateLeague(leagueId: ID!, active: Boolean!): League
     createGame(leagueId: ID!): League

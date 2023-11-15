@@ -38,7 +38,7 @@ const Home = () => {
                         key={index} 
                         description={league.description}
                         name={league.name}
-                        creator={league.admin.username}
+                        creator={league.admin._id}
                         totalPlayers={league.memberCount}
                         id={league._id}
                     />
