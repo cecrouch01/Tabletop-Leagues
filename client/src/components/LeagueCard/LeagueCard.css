@@ -14,7 +14,9 @@ height: 100%;
     margin-left: 10px;
     margin-right: 10px
 }
-
+.league-div {
+    width: 100%;
+}
 .league-name {
     margin-bottom: 10px;
     font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;

@@ -2,6 +2,7 @@
     border: 1px solid rgb(220, 216, 216);
     width: 400px;
     height: auto;
+    min-height: 151px;
     margin-top: 10px;
     margin-bottom: 10px;
     box-shadow: 0 2px 6px 1px gray;
