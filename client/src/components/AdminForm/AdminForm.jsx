@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import "./AdminForm.css";
+import "./Adminform.css";
 import { QUERY_SINGLE_USER } from "../../utils/queries";
 import { useQuery } from '@apollo/client';
 
