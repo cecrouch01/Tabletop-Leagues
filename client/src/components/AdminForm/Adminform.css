@@ -1,0 +1,27 @@
+.admin-form {
+    border: 1px solid rgb(220, 216, 216);
+    background-color: rgb(168, 168, 168);
+    width: auto;
+    height: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 6px 1px gray;
+    border-radius: 7px;
+    transition: all .5s;
+}
+
+.rank-submit {
+    margin-bottom: 10px;
+    padding: 10px 30px 10px 30px;
+    border: 1px solid black;
+    border-radius: 20px;
+    background-color: #ff914d;
+    transition: all .5s;
+}
+.rank-submit:hover {
+    color:#ff914d;
+    background-color: black;
+    border: 1px solid #ff914d;
+    box-shadow: 0 2px 6px 1px #ff914d;
+    transition: all .5s;
+}

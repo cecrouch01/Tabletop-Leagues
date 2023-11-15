@@ -11,7 +11,7 @@ const Dashboard = () => {
 
     const { loading: leaguesLoading, data: leaguesData } = useQuery(QUERY_LEAGUES)
     const allLeagues = leaguesData?.allLeagues || {}
-    
+    console.log(allLeagues)
     return (
         <div className='dshbrd-container'>
             <div className='dshbrd-user-card'>
@@ -34,6 +34,7 @@ const Dashboard = () => {
                             name={league.name}
                             creator={league.admin.username}
                             totalPlayers={league.memberCount}
+                            id={league._id}
                         />
                         }
                     })}
@@ -47,7 +48,8 @@ const Dashboard = () => {
                             description={league.description}
                             name={league.name}
                             creator={league.admin.username}
-                            totalPlayers={league.memberCount} 
+                            totalPlayers={league.memberCount}
+                            id={league._id}
                         />
                         }
                     })}

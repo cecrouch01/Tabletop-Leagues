@@ -45,6 +45,7 @@ const JoinLeagues = () => {
                         name={leagueByName[0]?.name || "no league found"}
                         creator={leagueByName[0]?.admin.username || "no creator found"}
                         totalPlayers={leagueByName[0]?.memberCount || "no league found"}
+                        
                     >
                         <button className="join-btn">Join</button>
                     </LeagueCard>

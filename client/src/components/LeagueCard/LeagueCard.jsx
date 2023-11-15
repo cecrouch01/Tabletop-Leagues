@@ -6,7 +6,7 @@ const LeagueCard = ({ children, description, name, creator, totalPlayers, id }) 
     if (!id) {
         id = "id";
     }
-    console.log("Props ID: ", id);
+    
     return (
         <Link className='card-link' to={'/league/' + id}>
             <Card>

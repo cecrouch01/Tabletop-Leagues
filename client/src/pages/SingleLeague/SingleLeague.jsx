@@ -1,6 +1,6 @@
 // import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { useQuery } from '@apollo/client';
+import { getApolloContext, useQuery } from '@apollo/client';
 // import AuthService from '../../utils/auth';
 import AdminForm from '../../components/AdminForm/AdminForm';
 import './SingleLeague.css';
@@ -48,12 +48,11 @@ const SingleLeague = () => {
   // if (loading) return <div>Loading League Details...</div>;
   // if (isError) return <div>An Error Occurred: {error?.message}</div>;
   const { id } = useParams();
-  console.log(id);
-  const { loading, error, data: getLeague } = useQuery(QUERY_SINGLE_LEAGUE, { variables: { id } });
+  
+  const { loading, data: getLeague } = useQuery(QUERY_SINGLE_LEAGUE, { variables: { id } });
   if (loading) return <p>Loading</p>
-  if (error) return <p>error</p>
-  const league = getLeague.getLeague;
-  console.log(league)
+  const league = getLeague?.getLeague || {};
+
   return (
 
     <div className="league-container">
@@ -65,7 +64,7 @@ const SingleLeague = () => {
           creator={league.admin?.username}
           totalPlayers={league.members?.length} />
       </div>
-      <AdminForm />
+      <AdminForm members={league.members} />
     </div>
 
     // <div className="single-league-container">
