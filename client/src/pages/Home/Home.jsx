@@ -12,8 +12,8 @@ const Home = () => {
 
     const allUsers = data?.allUsers || {};
     const allLeagues = data?.allLeagues || {}
-    console.log(allLeagues)
-
+    // console.log(allLeagues)
+    console.log(allUsers)
     return (
         <div className="home-body">
             <div>

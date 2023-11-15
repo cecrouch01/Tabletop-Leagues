@@ -1,6 +1,10 @@
 .card {
     background-color: rgb(168, 168, 168);
 }
+.placing {
+    text-align: center;
+    margin-bottom: 0px;
+}
 .user-card-contents {
     margin-left: 20px;
     display: flex;

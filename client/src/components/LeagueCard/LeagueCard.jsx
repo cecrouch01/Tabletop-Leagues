@@ -7,8 +7,7 @@ import './LeagueCard.css'
 const LeagueCard = ({ children, description, name, creator, totalPlayers, id }) => {
     const {loading, data} = useQuery(QUERY_SINGLE_USER, { variables: {id: creator}})
     const admindata = data?.getUser[0] || {}
-
-    console.log(admindata.username)
+    
     if (!id) {
         id = "id";
     }
