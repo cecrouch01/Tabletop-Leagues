@@ -3,7 +3,7 @@ import { GiAlienSkull, GiAngelWings, GiAries, GiBattleAxe, GiBull } from 'react-
 import placeholder from '../../assets/75x75-placeholder.png'
 import Card from '../Card/Card';
 import './UserCard.css';
-const UserCard = ({ username, wins, icon, description }) => {
+const UserCard = ({ username, wins, icon, description, place}) => {
     const iconFuction = (icon) => {
         switch (icon) {
             case 'alien':
@@ -22,6 +22,7 @@ const UserCard = ({ username, wins, icon, description }) => {
     }
     return (
         <Card className='card'>
+            {place ? <h2 className='placing'>Place: {place}</h2> : null}
             <div className='user-card-contents'>
                 <div>
                     <h3 className='username'>{username}</h3>
@@ -30,7 +31,7 @@ const UserCard = ({ username, wins, icon, description }) => {
                 <div className='stats-table'>
                     <h3 className='stats'>Stats</h3>
                     <ul className='stat-list'>
-                        <li>Skill Points</li>
+                        <li>Skill Points: Future Development</li>
                         <li>Total Wins: {wins}</li>
                         {/* <li>Best Ranking</li> */}
                         <li>{description}</li>
