@@ -8,14 +8,15 @@ import './JoinLeagues.css'
 
 
 const JoinLeagues = () => {
-    //State
+    const [leagues, setLeagues] = useState({})
     const [search, setSearch] = useState('');
     //searchCheck will be used to see if there is a value
     const [searchCheck, setSearchCheck] = useState(false)
 
     const { loading: allLeaguesLoading, data: allLeaguesData } = useQuery(QUERY_LEAGUES)
     const allLeagues = allLeaguesData?.allLeagues || {}
-    // console.log(allLeagues)
+    setLeagues(allLeagues)
+
     const [getLeague, { loading: leagueByNameLoading, data: leagueByNameData }] = useLazyQuery(QUERY_LEAGUE_BY_NAME);
     const leagueByName = leagueByNameData?.getLeagueByName || {}
     const [addMember, { error }] = useMutation(ADD_MEMBER)
@@ -52,7 +53,7 @@ const JoinLeagues = () => {
                 </div>}
             <div className="view-league">
                 <div className="left-column">
-                    {allLeaguesLoading ? <p>loading</p> : allLeagues.map((league, index) => {
+                    {allLeaguesLoading ? <p>loading</p> : leagues.map((league, index) => {
                         console.log(league);
                         if (index % 2 === 0) {
                             return (
@@ -81,7 +82,7 @@ const JoinLeagues = () => {
                     })}
                 </div>
                 <div className="right-column">
-                    {allLeaguesLoading ? <p>loading</p> : allLeagues.map((league, index) => {
+                    {allLeaguesLoading ? <p>loading</p> : leagues.map((league, index) => {
                         if (index % 2 !== 0) {
                             return (
                                 <LeagueCard

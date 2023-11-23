@@ -1,17 +1,23 @@
 import { useQuery } from '@apollo/client';
-
+import { useState } from 'react';
 import { QUERY_ME, QUERY_LEAGUES } from '../../utils/queries';
 import Card from '../../components/Card/Card'
 import LeagueCard from '../../components/LeagueCard/LeagueCard';
 import UserCard from '../../components/UserCard/UserCard';
 import './Dashboard.css'
 const Dashboard = () => {
+    const [me, setMe] = useState({});
+    const [leagueInfo, setLeagueInfo] = useState({})
+
     const { loading: meLoading, data: meData } = useQuery(QUERY_ME);
-    const { username, icon, description, wins, leagues } = meData?.getMe || {}
+    const myInfo = meData?.getMe || {}
+    setMe(myInfo)
+    const { username, icon, description, wins, leagues } = me
 
     const { loading: leaguesLoading, data: leaguesData } = useQuery(QUERY_LEAGUES)
     const allLeagues = leaguesData?.allLeagues || {}
-    console.log(allLeagues)
+    setLeagueInfo(allLeagues)
+    
     return (
         <div className='dshbrd-container'>
             <div className='dshbrd-user-card'>
@@ -26,7 +32,7 @@ const Dashboard = () => {
                 <section className='user-record'>
                     {/* I think we can use useReducer to change the card formats instead of using different cards */}
                     <h2 className='column-title'>Past Leagues</h2>
-                    {leaguesLoading ? <p>loading</p> : allLeagues.map((league, index) => {
+                    {leaguesLoading ? <p>loading</p> : leagueInfo.map((league, index) => {
                         if(league.active === false) {
                         return <LeagueCard 
                             key={index} 
@@ -41,7 +47,7 @@ const Dashboard = () => {
                 </section>
                 <section className='active-leagues'>
                     <h2 className='column-title'>Active Leagues</h2>
-                    {leaguesLoading ? <p>loading</p> : allLeagues.map((league, index) => {
+                    {leaguesLoading ? <p>loading</p> : leagueInfo.map((league, index) => {
                         if(league.active === true) {
                         return <LeagueCard 
                             key={index}

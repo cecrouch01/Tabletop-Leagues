@@ -1,5 +1,6 @@
 import {
     CHOOSE_ICON,
+    SET_INITIAL_DATA
 } from './actions';
 
 
@@ -12,8 +13,17 @@ export default function reducer(state, action) {
                 icon: action.payload
             }; 
         }
+        case SET_INITIAL_DATA: {
+            const { leagueData, usersData } = action.payload;
+            const allLeagues = leagueData.allLeagues;
+            const allUsers = usersData.allUsers;
+            return {
+                ...state,
+                allLeagues,
+                allUsers
+            }
+        }
         default:
             return;
     };
-
 };

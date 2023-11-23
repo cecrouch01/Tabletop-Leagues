@@ -56,10 +56,12 @@ query GetMe {
 export const QUERY_HOMEPAGE = gql`
 query HompageQuery {
   allUsers {
+    _id
     username
     icon
     description
     wins
+    leagueCount
   }
   allLeagues {
     _id
