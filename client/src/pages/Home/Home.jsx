@@ -1,24 +1,20 @@
-import { useQuery } from "@apollo/client";
+import { useQuery} from "@apollo/client";
+import { useState } from "react";
 
-
+import { useColosseumContext } from "../../utils/ColosseumContext";
 import LeagueCard from "../../components/LeagueCard/LeagueCard";
 import UserCard from "../../components/UserCard/UserCard";
-import { QUERY_USERS, QUERY_ME, QUERY_HOMEPAGE } from "../../utils/queries";
+import { QUERY_HOMEPAGE } from "../../utils/queries";
 import './Home.css';
 
 const Home = () => {
+    const [state] = useColosseumContext();
 
-    const { loading, data } = useQuery(QUERY_HOMEPAGE);
-
-    const allUsers = data?.allUsers || {};
-    const allLeagues = data?.allLeagues || {}
-    // console.log(allLeagues)
-    console.log(allUsers)
     return (
         <div className="home-body">
             <div>
                 <h2 className="column-title">Skilled Users</h2>
-                {loading ? <p>Loading</p> : allUsers.map((user, index) => {
+                {state.allUsers ? state.allUsers.map((user, index) => {
                     return (
                         <UserCard
                             key={index}
@@ -28,11 +24,13 @@ const Home = () => {
                             description={user.description}
                         />
                     )
-                })}
+                }) :
+                <p>Loading</p>
+                }
             </div>
             <div>
                 <h2 className="column-title">Top Leagues</h2>
-                {loading ? <p>Loading</p> : allLeagues.map((league, index) => {
+                {state.allLeagues ? state.allLeagues.map((league, index) => {
                     return (
                     <LeagueCard 
                         key={index} 
@@ -43,7 +41,9 @@ const Home = () => {
                         id={league._id}
                     />
                     )
-                })}
+                }) 
+                : 
+                <p>Loading</p>}
             </div>
         </div>
     )
