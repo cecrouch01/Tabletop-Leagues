@@ -1,22 +1,20 @@
 import { useState } from 'react';
 import { useMutation } from '@apollo/client';
-// import { checkPassword } from '../../utils/helpers';
-// import { useColosseumContext } from '../../utils/ColosseumContext';
+import { checkPassword } from '../../utils/helpers';
+import { CREATE_LEAGUE } from '../../utils/actions';
+import { useColosseumContext } from '../../utils/ColosseumContext';
 import Auth from '../../utils/auth';
 import { ADD_LEAGUE } from '../../utils/mutations';
 import './CreateLeague.css';
 
 const CreateLeague = () => {
-    // const [leagueName, setLeagueName] = useState('');
-    // const [password, setPassword] = useState('');
-    // const [leagueDescription, setLeagueDescription] = useState('');
     const [passwordErrorMessage, setPasswordErrorMessage] = useState('');
     const [nameErrorMessage, setNameErrorMessage] = useState('');
     
 
     const [addCreateLeagueData, setAddCreateLeagueData] = useState({ name: '', description: '', password: '' })
     const [addLeague, { error }] = useMutation(ADD_LEAGUE);
-    // const [state, dispatch] useColosseumContext();
+    const [state, dispatch] = useColosseumContext();
 
     const handleInputChange = (e) => {
         const { name, value } = e.target
@@ -33,15 +31,12 @@ const CreateLeague = () => {
         }
 
         try {
-            await addLeague({
+            const newLeague = await addLeague({
                 variables: { ...addCreateLeagueData }
             })
-            
-            // setAddCreateLeagueData({
-            //     name: '',
-            //     description: '',
-            //     password: '',
-            // })
+            console.log(newLeague)
+            //TODO: make it so newLeague doesn't have null variables then add it to dispatch state. 
+            // dispatch({type: CREATE_LEAGUE, payload: newLeague})
             alert('League created!');
 
         } catch (error) {
@@ -50,15 +45,6 @@ const CreateLeague = () => {
             console.log(error);
             throw new Error("sign up didn't work");
         }
-
-
-        //TODO: Tie this form to the back end
-        // console.log(leagueName)
-        // console.log(leagueDescription)
-        // setLeagueName('');
-        // setPassword('');
-        // setLeagueDescription('');
-        // setNameErrorMessage('');
         setAddCreateLeagueData({
             name: '',
             description: '',

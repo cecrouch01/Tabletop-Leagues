@@ -8,16 +8,7 @@ import { QUERY_HOMEPAGE } from "../../utils/queries";
 import './Home.css';
 
 const Home = () => {
-    // const [users, setUsers] = useState([])
-    // const [leagues, setLeagues] = useState([])
-    // const { loading, data } = useQuery(QUERY_HOMEPAGE);
-    // const allUsers = data?.allUsers || {};
-    // const allLeagues = data?.allLeagues || {}
-    
     const [state] = useColosseumContext();
-    console.log(state)
-
-
 
     return (
         <div className="home-body">

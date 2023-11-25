@@ -1,22 +1,22 @@
 import { useQuery } from '@apollo/client';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useColosseumContext } from '../../utils/ColosseumContext';
 import { QUERY_ME, QUERY_LEAGUES } from '../../utils/queries';
-import Card from '../../components/Card/Card'
 import LeagueCard from '../../components/LeagueCard/LeagueCard';
 import UserCard from '../../components/UserCard/UserCard';
 import './Dashboard.css'
 const Dashboard = () => {
     const [me, setMe] = useState({});
-    const [leagueInfo, setLeagueInfo] = useState({})
+    const [state] = useColosseumContext(); 
 
     const { loading: meLoading, data: meData } = useQuery(QUERY_ME);
     const myInfo = meData?.getMe || {}
-    setMe(myInfo)
+    useEffect(() => {
+         setMe(myInfo)
+    },[myInfo])
+   
     const { username, icon, description, wins, leagues } = me
-
-    const { loading: leaguesLoading, data: leaguesData } = useQuery(QUERY_LEAGUES)
-    const allLeagues = leaguesData?.allLeagues || {}
-    setLeagueInfo(allLeagues)
+   
     
     return (
         <div className='dshbrd-container'>
@@ -32,7 +32,7 @@ const Dashboard = () => {
                 <section className='user-record'>
                     {/* I think we can use useReducer to change the card formats instead of using different cards */}
                     <h2 className='column-title'>Past Leagues</h2>
-                    {leaguesLoading ? <p>loading</p> : leagueInfo.map((league, index) => {
+                    {state.allLeagues ?  state.allLeagues.map((league, index) => {
                         if(league.active === false) {
                         return <LeagueCard 
                             key={index} 
@@ -43,11 +43,11 @@ const Dashboard = () => {
                             id={league._id}
                         />
                         }
-                    })}
+                    }) : <p>loading</p>}
                 </section>
                 <section className='active-leagues'>
                     <h2 className='column-title'>Active Leagues</h2>
-                    {leaguesLoading ? <p>loading</p> : leagueInfo.map((league, index) => {
+                    {state.allLeagues ? state.allLeagues.map((league, index) => {
                         if(league.active === true) {
                         return <LeagueCard 
                             key={index}
@@ -58,7 +58,7 @@ const Dashboard = () => {
                             id={league._id}
                         />
                         }
-                    })}
+                    }): <p>loading</p>}
                 </section>
             </div>
         </div>

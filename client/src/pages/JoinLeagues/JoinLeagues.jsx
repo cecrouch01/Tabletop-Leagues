@@ -1,6 +1,7 @@
-import { useQuery, useMutation, useLazyQuery } from "@apollo/client";
-import { useState, useEffect } from "react";
-import { QUERY_LEAGUES, QUERY_LEAGUE_BY_NAME } from "../../utils/queries";
+import { useMutation, useLazyQuery } from "@apollo/client";
+import { useState } from "react";
+import { useColosseumContext } from "../../utils/ColosseumContext";
+import { QUERY_LEAGUE_BY_NAME } from "../../utils/queries";
 import { ADD_MEMBER } from "../../utils/mutations";
 import LeagueCard from "../../components/LeagueCard/LeagueCard";
 import { AiOutlineSearch } from 'react-icons/ai';
@@ -8,14 +9,10 @@ import './JoinLeagues.css'
 
 
 const JoinLeagues = () => {
-    const [leagues, setLeagues] = useState({})
+    const [state] = useColosseumContext();
     const [search, setSearch] = useState('');
     //searchCheck will be used to see if there is a value
     const [searchCheck, setSearchCheck] = useState(false)
-
-    const { loading: allLeaguesLoading, data: allLeaguesData } = useQuery(QUERY_LEAGUES)
-    const allLeagues = allLeaguesData?.allLeagues || {}
-    setLeagues(allLeagues)
 
     const [getLeague, { loading: leagueByNameLoading, data: leagueByNameData }] = useLazyQuery(QUERY_LEAGUE_BY_NAME);
     const leagueByName = leagueByNameData?.getLeagueByName || {}
@@ -53,8 +50,7 @@ const JoinLeagues = () => {
                 </div>}
             <div className="view-league">
                 <div className="left-column">
-                    {allLeaguesLoading ? <p>loading</p> : leagues.map((league, index) => {
-                        console.log(league);
+                    {state.allLeagues ?  state.allLeagues.map((league, index) => {
                         if (index % 2 === 0) {
                             return (
                                 <LeagueCard
@@ -79,10 +75,10 @@ const JoinLeagues = () => {
                                 </LeagueCard>
                             )
                         }
-                    })}
+                    }) : <p>loading</p>}
                 </div>
                 <div className="right-column">
-                    {allLeaguesLoading ? <p>loading</p> : leagues.map((league, index) => {
+                    {state.allLeagues ? state.allLeagues.map((league, index) => {
                         if (index % 2 !== 0) {
                             return (
                                 <LeagueCard
@@ -107,7 +103,7 @@ const JoinLeagues = () => {
                                 </LeagueCard>
                             )
                         }
-                    })}
+                    }) :  <p>loading</p>}
                 </div>
             </div>
         </div>
